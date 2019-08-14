@@ -1,5 +1,9 @@
 ---
 published: true
+layout: post
+title:  "Bikeshare"
+date:   2018-03-01 21:03:36 +0530
+categories: Data Science, 
 ---
 
 
