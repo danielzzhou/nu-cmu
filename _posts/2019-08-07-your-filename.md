@@ -6,12 +6,12 @@ date: '2018-03-01 21:03:36 +0530'
 categories: 'Data Science,'
 ---
 
-
-<\br>
-<\br>
-<\br>
-
+ 
+ 
+ 
+ 
 Price-based cross-sectional predictability of equity returns has become a fad in the financial industry in recent years. With the advent of machine learning asset pricing techniques, solely price-based predictive models, without the need for complementary fundamental or alternative data sources, seem extremely lucrative in the investment framework if proved robust. Will it really work?
+
 ***Special Thanks to Katherine Liu, Chris Wang and Joe Zhou***
 
 This research digs into the predictive powers of price-based variables in US equity stock returns with machine learning tools. We apply multiple machine learning models to estimate the probability of the next period return of a stock being above and below the cross-sectional median. The analysis focuses on the predictability of momentum factors with different lookback horizons, which represent the empirically observed tendency for rising asset prices to rise further, and falling prices to keep falling. 
