@@ -7,9 +7,9 @@ categories: 'Data Science,'
 ---
 
 
-</br>
-</br>
-</br>
+<\br>
+<\br>
+<\br>
 
 Price-based cross-sectional predictability of equity returns has become a fad in the financial industry in recent years. With the advent of machine learning asset pricing techniques, solely price-based predictive models, without the need for complementary fundamental or alternative data sources, seem extremely lucrative in the investment framework if proved robust. Will it really work?
 ***Special Thanks to Katherine Liu, Chris Wang and Joe Zhou***
@@ -160,4 +160,3 @@ knitr::include_graphics("box/2.png")
 knitr::include_graphics("box/3.png")
 knitr::include_graphics("box/4.png")
 ```
-
