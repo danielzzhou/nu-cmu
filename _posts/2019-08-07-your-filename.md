@@ -35,7 +35,7 @@ Where $\tau \in [t - k, t - 1]$ and $k = [10, 21. 42, 63, ... , 252]$ days; $r_{
 
 ***Market return and volatility*** Furthermore, we also use the S&P 500 index to estimate the average market returns and standard deviation of returns over k days ( k = [10, 21, 42, 63, 126, 252]) . There is further analysis reporting the nonlinearity in the relationship between momentum returns and past market performance, which encourages us to apply advanced machine learning models on this problem.     
 
-#### Models and training
+### Models and training
 Following Borisenko, the prediction is framed as a classification problem to forecast if the cross-sectional return is above or below the median.
 
 $$
