@@ -78,7 +78,7 @@ After calculating the profit generated from each stock and the weight of stock, 
 The model predictions are assessed on the validation set. With a base rate of 49.9%, table 1 shows the misclassification rates and the top 1000 scores of the candidate model predictions. The misclassification rate captures the prediction error on the validation set, while the top 1000 score captures the success rate of the top 1000 predicted posterior probability. Figure 1 (left) shows the receiver operating characteristic curves of cross-sectional prediction using the same set of models. Figure 1 (right) shows the ROC result of the robustness check of the data and model performances on the in-period return predictions. 
 
 
-![roccrosssection.png]({{"/posts/roccrosssection.png" | absolute_url}})
+![roccrosssection.png]({{"/assets/article1/roccrosssection.png" | absolute_url}})
 
 
 With an almost 0% misclassification rate and ideal ROC curves, we can ensure that the constructed features have high explanatory power of in-period returns. However, the models do not generalize well, leaving us very different results from the deep learning framework of the original paper. All misclassification rates are not significantly different from the base rate; regarding the top 1000 rate, tree-based models (random forest and XGBoost) in fact have worse performance than more fundamental ones. 
