@@ -77,14 +77,7 @@ After calculating the profit generated from each stock and the weight of stock, 
 #### 1. Out-of-Sample Performance
 The model predictions are assessed on the validation set. With a base rate of 49.9%, table 1 shows the misclassification rates and the top 1000 scores of the candidate model predictions. The misclassification rate captures the prediction error on the validation set, while the top 1000 score captures the success rate of the top 1000 predicted posterior probability. Figure 1 (left) shows the receiver operating characteristic curves of cross-sectional prediction using the same set of models. Figure 1 (right) shows the ROC result of the robustness check of the data and model performances on the in-period return predictions. 
 
-```{r echo=FALSE,fig.cap="Table 1. metrics for classification models"}
-library(knitr)
-Model <- c('Logistic Lasso','Linear Discriminant Analysis', 'Quadratic Discriminant Analysis', 'Random Forest', 'XGBoost')
-Misclassification_Rate <- c('47.98%','47.89%','50.30%','48.21%','48.93%')
-Top1000Rate <-c('60.40%','65.01%','85.97%','54.05%','52.40%')
-table1 <- data.frame(Model, Misclassification_Rate, Top1000Rate)
-kable(table1)
-```
+
 ```![roccrosssection.png]({{site.baseurl}}/_posts/roccrosssection.png)```
 
 
