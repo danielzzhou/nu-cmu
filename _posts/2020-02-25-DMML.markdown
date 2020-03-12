@@ -80,7 +80,7 @@ The model predictions are assessed on the validation set. With a base rate of 49
 ![]({{site.baseurl}}/_posts/backtest.png)
 ![roccrosssection.png](/_posts/roccrosssection.png)
 
-
+![]({{site.baseurl}}/https://miro.medium.com/max/500/0*bAC5Qon7jQbNDknI.jpg)
 ![box.png]({{site.baseurl}}/_posts/box.png)
 
 With an almost 0% misclassification rate and ideal ROC curves, we can ensure that the constructed features have high explanatory power of in-period returns. However, the models do not generalize well, leaving us very different results from the deep learning framework of the original paper. All misclassification rates are not significantly different from the base rate; regarding the top 1000 rate, tree-based models (random forest and XGBoost) in fact have worse performance than more fundamental ones. 
