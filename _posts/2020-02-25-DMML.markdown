@@ -3,7 +3,7 @@ published: true
 layout: post
 title: Dissecting Momentum through Machine Learning?
 date: '2020-02-25 21:03:36 +0530'
-categories: Machine Learning
+categories: 'MachineLearning, MomentumInvesting'
 ---
 
  
