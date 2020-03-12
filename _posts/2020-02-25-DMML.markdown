@@ -89,10 +89,6 @@ kable(table1)
 
 
 
-Table 1. metrics for classification models
-
-
-
 With an almost 0% misclassification rate and ideal ROC curves, we can ensure that the constructed features have high explanatory power of in-period returns. However, the models do not generalize well, leaving us very different results from the deep learning framework of the original paper. All misclassification rates are not significantly different from the base rate; regarding the top 1000 rate, tree-based models (random forest and XGBoost) in fact have worse performance than more fundamental ones. 
 
 Zooming in, we find that the Quadratic Discriminant Analysis achieved a relatively high Top 1000 score despite its mediocre performance on other metrics. Figure 2 shows the predicted posterior probability distribution of the QDA model. The distribution signifies the fact that without an assumption of the class distributions, QDA is able to capture the tail probability relatively well, i.e. allocates higher posterior probabilities on edges and results in the high Top 1000 Sucess rate.
