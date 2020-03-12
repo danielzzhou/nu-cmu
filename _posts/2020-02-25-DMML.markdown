@@ -8,18 +8,18 @@ categories: MachineLearning MomentumInvesting
 
  
  
-*Special Thanks to Katherine Liu, Chris Wang and Joe Zhou* 
+*In collaboration with Katherine Liu, Chris Wang and Joe Zhou* 
  
 Price-based cross-sectional predictability of equity returns has become a fad in the financial industry in recent years. With the advent of machine learning asset pricing techniques, solely price-based predictive models, without the need for complementary fundamental or alternative data sources, seem extremely lucrative in the investment framework if proved robust. Will it really work?
 
-This research digs into the predictive powers of price-based variables in US equity stock returns with machine learning tools. We apply multiple machine learning models to estimate the probability of the next period return of a stock being above and below the cross-sectional median. The analysis focuses on the predictability of momentum factors with different lookback horizons, which represent the empirically observed tendency for rising asset prices to rise further, and falling prices to keep falling. 
+This research digs into the predictive powers of price-based variables in US equity stock returns with machine learning tools. We apply multiple classic machine learning models to estimate the probability of the next period return of a stock being above and below the cross-sectional median. The analysis focuses on the predictability of momentum factors with different lookback horizons, which represent the empirically observed tendency for rising asset prices to rise further, and falling prices to keep falling. 
 
 The research idea originates from a paper by Borisenko published in 2019: Momentum Investing and Alternative to Deep Learning Methodologies. The original paper discovers findings in price-based variables, especially momentum, in the deep learning realm. However, deep learning models suffer from “black-box” problems such as non-transparency and overfitting. Hence in our project, we are curious about whether more fundamental machine learning models can be applied as an alternative in a similar framework. In addition, we are skeptical about whether we could simply use momentum and market alpha, beta to predict the return. In the case where the result is far from ideal, we want to further analyze the problem and improve the model. Therefore, research is constructed as follows: feature construction, machine learning model building, backtesting strategies and further analysis based on the model performances. 
 
 
 ##  Data and Methodology
 ### Feature Construction
-In machine learning, variable inputs are usually referred to as features and the dependent variable as the response. The feature set in the research consists of two categories: momentum factors and market condition variables. The features are subsequently The response will be an indicator of whether the cross-sectional return is above or below the median in the next period.\ 
+The feature set in the research consists of two categories: momentum factors and market condition variables. The features are subsequently The response will be an indicator of whether the cross-sectional return is above or below the median in the next period.
 
 #### 1. Momentum
 Momentum is described as the tendency that winning stocks tend to outperform whereas stocks with falling prices tend to fall even more. In our research project, we construct the momentum variables following the method described in Borisenko's paper and Lindgren’s paper. We use the following equation to calculate the momentum variable for  k = [1,2, …, 21,42, 63, …, 252].
@@ -39,7 +39,7 @@ where $$\tau \in [t - k, t - 1]$$ and $$k = [10, 21. 42, 63, ... , 252]$$ days; 
 
 ***Market Alpha*** From the FF-3, the alpha could price the cross-section of equity returns and the alpha momentum dominates price momentum in the US. Compared with price momentum, the alpha momentum experiences slower reversions in post-formation periods. Investing in the past alpha delivers less volatile returns compared to investing in price momentum. 
 
-***Market return and volatility*** Furthermore, we also use the S&P 500 index to estimate the average market returns and standard deviation of returns over k days ( k = [10, 21, 42, 63, 126, 252]) . There is further analysis reporting the nonlinearity in the relationship between momentum returns and past market performance, which encourages us to apply advanced machine learning models on this problem.     
+***Market return and volatility*** we also use the S&P 500 index to estimate the average market returns and standard deviation of returns over k days ( k = [10, 21, 42, 63, 126, 252]) . There is further analysis reporting the nonlinearity in the relationship between momentum returns and past market performance, which encourages us to apply advanced machine learning models on this problem.     
 
 ### Models and training
 Following Borisenko, the prediction is framed as a classification problem to forecast if the cross-sectional return is above or below the median.
@@ -85,14 +85,13 @@ Top1000Rate <-c('60.40%','65.01%','85.97%','54.05%','52.40%')
 table1 <- data.frame(Model, Misclassification_Rate, Top1000Rate)
 kable(table1)
 ```
+```![roccrosssection.png]({{site.baseurl}}/_posts/roccrosssection.png)```
 
-\begin{center}
+
+
 Table 1. metrics for classification models
-\end{center}
 
-```{r pressure, echo=FALSE, fig.cap="ROC curves for cross-sectional predictions (left) and in-period predictions (right) by each model", out.width = '40%',fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("roccrosssection.png","rocinsection.png"))
-```
+
 
 With an almost 0% misclassification rate and ideal ROC curves, we can ensure that the constructed features have high explanatory power of in-period returns. However, the models do not generalize well, leaving us very different results from the deep learning framework of the original paper. All misclassification rates are not significantly different from the base rate; regarding the top 1000 rate, tree-based models (random forest and XGBoost) in fact have worse performance than more fundamental ones. 
 
