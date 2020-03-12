@@ -2,8 +2,8 @@
 published: true
 layout: post
 title: Dissecting Momentum through Machine Learning?
-date: '2018-03-01 21:03:36 +0530'
-categories: 'Data Science,'
+date: '2020-02-25 21:03:36 +0530'
+categories: Machine Learning
 ---
 
  
