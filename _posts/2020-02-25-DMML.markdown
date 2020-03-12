@@ -78,7 +78,7 @@ After calculating the profit generated from each stock and the weight of stock, 
 The model predictions are assessed on the validation set. With a base rate of 49.9%, table 1 shows the misclassification rates and the top 1000 scores of the candidate model predictions. The misclassification rate captures the prediction error on the validation set, while the top 1000 score captures the success rate of the top 1000 predicted posterior probability. Figure 1 (left) shows the receiver operating characteristic curves of cross-sectional prediction using the same set of models. Figure 1 (right) shows the ROC result of the robustness check of the data and model performances on the in-period return predictions. 
 
 
-![roccrosssection.png]({{site.baseurl}}/_posts/roccrosssection.png)
+![roccrosssection.png](/_posts/roccrosssection.png)
 
 
 ![box.png]({{site.baseurl}}/_posts/box.png)
