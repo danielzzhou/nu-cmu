@@ -30,7 +30,7 @@ To accomplish the binomial tree approximation, we can let the steps (n) in the f
 *Note: this is only one way of deriving Black Scholes formula, which arguably is not the fastest method. But it's the first one that I got exposure to and is very intuitive.*
 
 ### Numerical Calculation Summary
-To conduct the numerical approximation of the binomial tree model to the Black Scholes, I chose to implement the numerical process in **R** - the statistical programming language that allowed me to code out specific steps. For convenience, I set up a series of functions that roll out the necessary steps in calculating the price of the European call at time 0. First, I created a function that returns risk-neutral probability (*function rn_prob(r,deltaT,sigma)*) for use in future steps. In this function, up ($u = e^{\sigma\sqrt\Delta_{t}}$) and down ($d = e^{-\sigma\sqrt\Delta_{t}}$) factors were set up using the formula under **the Cox-Rox-Rubinson condition**.$\vspace{0.2cm}$\   
+To conduct the numerical approximation of the binomial tree model to the Black Scholes, I chose to implement the numerical process in **R** - the statistical programming language that allowed me to code out specific steps. For convenience, I set up a series of functions that roll out the necessary steps in calculating the price of the European call at time 0. First, I created a function that returns risk-neutral probability (*function rn_prob(r,deltaT,sigma)*) for use in future steps. In this function, up ($$u = e^{\sigma\sqrt\Delta_{t}}$$) and down ($$d = e^{-\sigma\sqrt\Delta_{t}}$$) factors were set up using the formula under **the Cox-Rox-Rubinson condition**.$\vspace{0.2cm}$\   
 ```r
 #first set up a function that rolls about risk neutral probability
 rn_prob = function(r, deltaT, sigma) {
@@ -59,9 +59,34 @@ stock_tree = function(S, sigma, deltaT, N) {
   return(treem)
 }
 ```
-Similar to what we do for manual calculation, I hoped to construct a tree through the program and realized that a matrix (*stock_tree(S, sigma, deltaT, N)*) can help achieve the goal. There are **N+1** steps in the multi-step binomial tree model so I set up a $(N+1)\times(N+1)$ matrix and on the ith row and jth column, the stock price is $S\times u^{j-1} \times d^{(i-1)-(j-1)}$.$\vspace{0.2cm}$\   
-Next,another function (*option_value(tree, sigma, deltaT, r, k)*) builds the option tree upon the stock tree. While the tree model in the previous function sets up the stock prices, the function reads in the tree and other parameters and calculates the actual value on each node. Since we are doing calculation on European call, the call formula $(S-K,0)^{+}$ is used. Then the payoff on each node is $\frac{(1-p^{*})*optiontree[i+1,j]+p^{*}*optiontree[i+1,j+1]}{e^{r\Delta T}}$.$\vspace{0.2cm}$\   
-Finally, an ultimate function (*option_price(sigma, T, r, k, S, N)*) directly calls on the previous trees. This function takes the following parameters by order: volatility, expiration time, annual interest rate, strike price, stock price and steps. The option tree is based off the stock tree and I can retrieve the desired option price from (1,1) of the option tree matrix.$\vspace{0.2cm}$\   
+Similar to what we do for manual calculation, I hoped to construct a tree through the program and realized that a matrix (*stock_tree(S, sigma, deltaT, N)*) can help achieve the goal. There are **N+1** steps in the multi-step binomial tree model so I set up a $(N+1)\times(N+1)$ matrix and on the ith row and jth column, the stock price is $S\times u^{j-1} \times d^{(i-1)-(j-1)}$.  
+
+Next, another function (*option_value(tree, sigma, deltaT, r, k)*) builds the option tree upon the stock tree. While the tree model in the previous function sets up the stock prices, the function reads in the tree and other parameters and calculates the actual value on each node. Since we are doing calculation on European call, the call formula $$(S-K,0)^{+}$$ is used. Then the payoff on each node is $$\frac{(1-p^{*})*optiontree[i+1,j]+p^{*}*optiontree[i+1,j+1]}{e^{r\Delta T}}$$.
+
+```r
+#since this is a call here we are only considering the situation of call here
+option_value = function(stock_tree, sigma, deltaT, r, k) {
+  pstar = rn_prob(r, deltaT, sigma)
+  option_tree = matrix(0, nrow=nrow(stock_tree), ncol=ncol(stock_tree))
+  option_tree[nrow(option_tree),] = pmax(stock_tree[nrow(stock_tree),] - k, 0)
+  for (i in (nrow(stock_tree)-1):1) {
+    for(j in 1:i) {
+      option_tree[i, j] = ((1-pstar)*option_tree[i+1,j] +pstar*option_tree[i+1,j+1])/exp(r*deltaT)
+    }
+  }
+  return(option_tree)
+}
+
+option_price= function(sigma, T, r, k, S, N) {
+  stock = stock_tree(S=S, sigma=sigma, deltaT=T/N, N=N)
+  option = option_value(stock, sigma=sigma, deltaT=T/N, r=r, k=k)
+  return(list(option=option,price=option[1,1]))
+}
+```
+
+Finally, an ultimate function (*option_price(sigma, T, r, k, S, N)*) directly calls on the previous trees. This function takes the following parameters by order: volatility, expiration time, annual interest rate, strike price, stock price and steps. The option tree is based off the stock tree and I can retrieve the desired option price from (1,1) of the option tree matrix.
+
+
 Using the option_price() function, we can manipulate the parameters to compare the outcome. In this project, my goal is to explore the convergence of call price when the steps in binomial tree increase thus I hope to change the steps (N) and to compare the resulting call price. Regarding the scaled parameters, though not specified, since  $\Delta T = \frac{T}{N}$, I noted that the volatility is scaled by $\sqrt{\frac{T}{N}}$.$\vspace{0.2cm}$\   
 For the approximation process, I started from 10-step binomial tree and the resulting call price is relatively far away from our target price ($9.49). Then I increased the steps to 50, 100, 150, 200 and 250. When there were 50 and 100 steps, the resulting prices were $9.5307 and $9.5068 respectively. Surprisingly, as the steps gradually increment, the absolute differences between the price from Black Scholes formula and my calculted price decreased to 0.003 (which is less than 1 cent)  when I incremented to 150 steps. There were fluctuations in the prices but the differences became more and more minimal. I realized that picking out specific steps only captures crude snippets of the convergence so I decided to initialize a "for" loop and repeated the calculation for every single step (see code). Through the loop, I looked for the steps where I had the closest approximation and also tried to graph the convergence out.\  
 ```javascript
