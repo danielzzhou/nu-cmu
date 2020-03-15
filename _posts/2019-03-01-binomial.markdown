@@ -140,8 +140,8 @@ for (i in (1:250)) {
 }
 N=which.min(abs_dif)
 ```
-##### When there are 188 steps (N=188), the multi-step binomial model achieved the closest approximation with the price of 9.489976.
-Let's have a look at a small snippet of the binomial tree at 188 steps.
+**When there are 188 steps (N=188), the multi-step binomial model achieved the closest approximation with the price of 9.489976.
+Let's have a look at a small snippet of the binomial tree at 188 steps.**
 
 From graph (zoomed in on the right) and the calculation, I observe that    
 1) **the variation of the option price has been decreasing when steps increase, i.e. the call price by binomial tree approximation shows a conspicuous pattern of convergence. After we reach more than 150 steps, the difference is kept under 2 cents.**   
