@@ -76,7 +76,10 @@ option_value = function(stock_tree, sigma, deltaT, r, k) {
   }
   return(option_tree)
 }
+```
+Finally, an ultimate function (*option_price(sigma, T, r, k, S, N)*) directly calls on the previous trees. This function takes the following parameters by order: volatility, expiration time, annual interest rate, strike price, stock price and steps. The option tree is based off the stock tree and I can retrieve the desired option price from (1,1) of the option tree matrix.
 
+```r
 option_price= function(sigma, T, r, k, S, N) {
   stock = stock_tree(S=S, sigma=sigma, deltaT=T/N, N=N)
   option = option_value(stock, sigma=sigma, deltaT=T/N, r=r, k=k)
@@ -84,7 +87,7 @@ option_price= function(sigma, T, r, k, S, N) {
 }
 ```
 
-Finally, an ultimate function (*option_price(sigma, T, r, k, S, N)*) directly calls on the previous trees. This function takes the following parameters by order: volatility, expiration time, annual interest rate, strike price, stock price and steps. The option tree is based off the stock tree and I can retrieve the desired option price from (1,1) of the option tree matrix.
+
 
 
 Using the option_price() function, we can manipulate the parameters to compare the outcome. In this project, my goal is to explore the convergence of call price when the steps in binomial tree increase thus I hope to change the steps (N) and to compare the resulting call price. Regarding the scaled parameters, though not specified, since  $\Delta T = \frac{T}{N}$, I noted that the volatility is scaled by $\sqrt{\frac{T}{N}}$.$\vspace{0.2cm}$\   
