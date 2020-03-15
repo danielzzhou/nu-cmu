@@ -5,7 +5,18 @@ date: '2019-03-01 21:03:36 +0530'
 categories: R Simulation Finance
 published: true
 ---
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+### Introduction
+> The Binomial Options Pricing Model is a generalized numerical method used to value options in the quantitative Financial Services industry. To be accurate, it is a lattice-based approach that uses a discrete-time model of the varying price over time of the underlying financial instrument. First proposed by Cox, Ross, and Rubenstein in 19791. Binomial option pricing is a simple but powerful technique that can be used to solve many complex option-pricing problems. 
+
+This illustrative project involves the entire tree matrix for the intermediate steps to illustrate the implementation.
+
+### Black Scholes Formula Computation
+For comparison, let's use Black Scholes formula.
+The Black Scholes formula is used to calculate the theoretical value of European options using current stock prices, the option's strike price, expected interest rates, time to expiration and expected volatility. The call price is  $C = S* N(d_{1}) - N(d_{2}) * K* e^{-rT}$, where $d_{1} = \frac {ln (S/K) + (r+\sigma^2/2)t}{\sigma\sqrt{t}}$ and
+$d_{2} = d_{1} - \sigma\sqrt{t}$.
+The formula is divided into two parts: the first part multiplies the current price by the change in the call premium relative to the change in the underlying price. It represents the expected benefit of purchasing the underlying option. The second part gives the present value of paying the strike price on expiration and the call price is calculated by the difference of the two parts.\  
+
+In this project, Strik price = $120, Expiration time = 1 yr, Annual interestrate=0.07, volitility = 0.3, current price = $104.4. By plugging the parameters into the Black Scholes formula, I figured that the theoretical value of this call option is **$9.490328**.\ 
 
 ```javascript
 const Razorpay = require('razorpay');
