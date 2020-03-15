@@ -12,8 +12,10 @@ First proposed by Cox, Ross, and Rubenstein in 19791. Binomial option pricing is
 
 ### Black Scholes Formula Computation
 For comparison, let's use Black Scholes formula.
-The Black Scholes formula is used to calculate the theoretical value of European options using current stock prices, the option's strike price, expected interest rates, time to expiration and expected volatility. The call price is  $C = S* N(d_{1}) - N(d_{2}) * K* e^{-rT}$, where $d_{1} = \frac {ln (S/K) + (r+\sigma^2/2)t}{\sigma\sqrt{t}}$ and
-$d_{2} = d_{1} - \sigma\sqrt{t}$.
+
+The Black Scholes formula is used to calculate the theoretical value of European options using current stock prices, the option's strike price, expected interest rates, time to expiration and expected volatility. The call price is  $$C = S* N(d_{1}) - N(d_{2}) * K* e^{-rT}$$, where $$d_{1} = \frac {ln (S/K) + (r+\sigma^2/2)t}{\sigma\sqrt{t}}$$ and
+$$d_{2} = d_{1} - \sigma\sqrt{t}$$.
+
 The formula is divided into two parts: the first part multiplies the current price by the change in the call premium relative to the change in the underlying price. It represents the expected benefit of purchasing the underlying option. The second part gives the present value of paying the strike price on expiration and the call price is calculated by the difference of the two parts.\  
 
 In this project, Strik price = $120, Expiration time = 1 yr, Annual interestrate=0.07, volitility = 0.3, current price = $104.4. By plugging the parameters into the Black Scholes formula, I figured that the theoretical value of this call option is **$9.490328**.\ 
