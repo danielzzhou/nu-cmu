@@ -1,14 +1,13 @@
 ---
 published: true
 layout: post
-title: Dissecting Momentum through Machine Learning?
+title: MinneMUDAC
 date: '2018-03-01 21:03:36 +0530'
 categories: 'Data Science,'
 ---
 
  
- 
-*Special Thanks to Katherine Liu, Chris Wang and Joe Zhou* 
+
  
 Price-based cross-sectional predictability of equity returns has become a fad in the financial industry in recent years. With the advent of machine learning asset pricing techniques, solely price-based predictive models, without the need for complementary fundamental or alternative data sources, seem extremely lucrative in the investment framework if proved robust. Will it really work?
 
