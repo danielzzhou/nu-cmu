@@ -6,9 +6,9 @@ categories: R Simulation Finance
 published: true
 ---
 
-The Binomial Options Pricing Model is a generalized numerical method used to value options in the quantitative Financial Services industry. To be accurate, it is a lattice-based approach that uses a discrete-time model of the varying price over time of the underlying financial instrument. 
+The Binomial Options Pricing Model is a lattice-based approach that uses a discrete-time model of the varying price over time of the underlying financial instrument. This illustrative project involves the entire tree matrix for the intermediate steps to illustrate the implementation. 
 
-This illustrative project involves the entire tree matrix for the intermediate steps to illustrate the implementation. First proposed by Cox, Ross, and Rubenstein in 19791. Binomial option pricing is a simple but powerful technique that can be used to solve many complex option-pricing problems. 
+First proposed by Cox, Ross, and Rubenstein in 19791. Binomial option pricing is a simple but powerful technique that can be used to solve many complex option-pricing problems. 
 
 ### Black Scholes Formula Computation
 For comparison, let's use Black Scholes formula.
