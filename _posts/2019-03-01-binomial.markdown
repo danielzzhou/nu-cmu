@@ -13,7 +13,11 @@ First proposed by Cox, Ross, and Rubenstein in 19791. Binomial option pricing is
 ### Black Scholes Formula Computation
 For comparison, let's use Black Scholes formula.
 
-The Black Scholes formula is used to calculate the theoretical value of European options using current stock prices, the option's strike price, expected interest rates, time to expiration and expected volatility. The call price is  $$C = S* N(d_{1}) - N(d_{2}) * K* e^{-rT}$$, where $$d_{1} = \frac {ln (S/K) + (r+\sigma^2/2)t}{\sigma\sqrt{t}}$$ and
+The Black Scholes formula is used to calculate the theoretical value of European options using current stock prices, the option's strike price, expected interest rates, time to expiration and expected volatility. The call price is  
+
+$$C = S* N(d_{1}) - N(d_{2}) * K* e^{-rT}$$
+
+where $$d_{1} = \frac {ln (S/K) + (r+\sigma^2/2)t}{\sigma\sqrt{t}}$$ and
 $$d_{2} = d_{1} - \sigma\sqrt{t}$$.
 
 The formula is divided into two parts: the first part multiplies the current price by the change in the call premium relative to the change in the underlying price. It represents the expected benefit of purchasing the underlying option. The second part gives the present value of paying the strike price on expiration and the call price is calculated by the difference of the two parts.\  
@@ -22,13 +26,16 @@ In this project, Strik price = $120, Expiration time = 1 yr, annual interestrate
 
 ### Binomial Tree Approximation 
 Theoretically, the Black Scholes formula, the continuous-time pricing formula, can be approximated by the step increments of binomial tree models. Binomial trees are a discrete pricing model in which we can derive the option price by 
+
 $$f_{0}=\frac{E[f(Sn)]}{R^{n}}=\frac{E[S_{0}e^{Z_{n}lnu}]}{R^{n}}$$ 
+
 where $$Z_{n}=X_{1}+...+X_{n}$$ is the corresponding random walk. 
 
-To accomplish the binomial tree approximation, we can let the steps (n) in the formula go to infinity. By the **Central Limit Theorem**, we know $$Z_{n}$$ is very close to a normal distribution so that $$\mu(Z_{n})=n\mu(X_{1})$$ and $$\sigma(Z_{n})=\sqrt(n)\sigma(X_{1})$$. Applying that to the continuous-time stock price model, we have 
+To accomplish the binomial tree approximation, we can let the steps (n) in the formula go to infinity. By the **Central Limit Theorem**, we know $$Z_{n}$$ is very close to a normal distribution so that $$\mu(Z_{n})=n\mu(X_{1})$$ and $$\sigma(Z_{n})=\sqrt n\sigma(X_{1})$$. Applying that to the continuous-time stock price model, we have 
 $$\frac{Z_{n}lnu-E(Znlnu)}{\sigma(Z_{n}lnu)}\sim N(0,1)$$. 
 
 By further induction, we can show that the option price 
+
 $$f_{0}=e^{-rT}Ef(S_{0}exp[\sigma W_{T} + (r-\frac{\sigma^2}{2}T)])$$ 
 
 where $$W_{T} \sim (0,T)$$. 
@@ -139,7 +146,4 @@ Let's have a look at a small snippet of the binomial tree at 188 steps.
 From graph (zoomed in on the right) and the calculation, I observe that    
 1) **the variation of the option price has been decreasing when steps increase, i.e. the call price by binomial tree approximation shows a conspicuous pattern of convergence. After we reach more than 150 steps, the difference is kept under 2 cents.**   
 2) steps of odd numbers tend to underestimate the call price while even numbers overestimate,    
-3) when there are **188 steps** (N=188), the multi-step binomial model achieved the closest approximation with the price of **$9.489976** with absolute difference less than 0.1 cent.   
-
-
-
+3) when there are **188 steps** (N=188), the multi-step binomial model achieved the closest approximation with the price of **$9.489976** with absolute difference less than 0.1 cent.
