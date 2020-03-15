@@ -107,32 +107,10 @@ price_change %>%
   geom_line(aes(y=bs_price),size=0.3,color='black')+
   theme_minimal()
 ```
-
+![result]({{"/assets/article2/num1.png" | absolute_url}})
 
 From graph (zoomed in on the right) and the calculation, I observe that    
 1) **the variation of the option price has been decreasing when steps increase, i.e. the call price by binomial tree approximation shows a conspicuous pattern of convergence. After we reach more than 150 steps, the difference is kept under 2 cents.**   
 2) steps of odd numbers tend to underestimate the call price while even numbers overestimate,    
 3) when there are **188 steps** (N=188), the multi-step binomial model achieved the closest approximation with the price of **$9.489976** with absolute difference less than 0.1 cent.   
 
-```javascript
-const Razorpay = require('razorpay');
-
-let rzp = Razorpay({
-	key_id: 'KEY_ID',
-	secret: 'name'
-});
-
-// capture request
-rzp.capture(payment_id, cost)
-	.then(function (data) {
-		return 2;
-	})
-```
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-Hello.
-Hello.
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
