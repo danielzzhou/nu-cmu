@@ -91,6 +91,9 @@ Using the option_price() function, we can manipulate the parameters to compare t
 
 For the approximation process, I started from 10-step binomial tree and the resulting call price is relatively far away from our target price ($9.49). Then I increased the steps to 50, 100, 150, 200 and 250. When there were 50 and 100 steps, the resulting prices were $9.5307 and $9.5068 respectively. As the steps gradually increment, the absolute differences between the price from Black Scholes formula and my calculted price decreased to 0.003 (which is less than 1 cent)  when I incremented to 150 steps. There were fluctuations in the prices but the differences became more and more minimal. I realized that picking out specific steps only captures crude snippets of the convergence so I decided to initialize a "for" loop and repeated the calculation for every single step (see code). Through the loop, I looked for the steps where I had the closest approximation and also tried to graph the convergence out.
 ```r
+library(ggplot2)
+library(tidyverse)
+
 steps <- 1:250
 price_change <- data_frame(steps,price)
 price_change <- price_change %>% add_column(bs_price=9.490328)
@@ -107,10 +110,29 @@ price_change %>%
   geom_line(aes(y=bs_price),size=0.3,color='black')+
   theme_minimal()
 ```
+*Note: this gets slower as period increases since this is at $$O(N^{2})$$. Some research leads me to a parallel implementation using the library `parallel` if we want to do something more complicated in the future.
+
 ![result]({{"/assets/article2/num1.png" | absolute_url}})
+
+Just out of curiosty, I tried to figure out which step produced the call price closest to the desired one.
+```r
+dif={}
+price={}
+abs_dif={}
+for (i in (1:250)) {
+  price[i]=option_price(0.3, 1, 0.07, 120, 104.4, i)
+  abs_dif[i]=abs(option_price(0.3, 1, 0.07, 120, 104.4, i)-9.490328)
+  dif[i]= option_price(0.3, 1, 0.07, 120, 104.4, i)-9.490328
+}
+N=which.min(abs_dif)
+```
+##### When there are 188 steps (N=188), the multi-step binomial model achieved the closest approximation with the price of 9.489976.
+Let's have a look at a small snippet of the binomial tree at 188 steps.
 
 From graph (zoomed in on the right) and the calculation, I observe that    
 1) **the variation of the option price has been decreasing when steps increase, i.e. the call price by binomial tree approximation shows a conspicuous pattern of convergence. After we reach more than 150 steps, the difference is kept under 2 cents.**   
 2) steps of odd numbers tend to underestimate the call price while even numbers overestimate,    
 3) when there are **188 steps** (N=188), the multi-step binomial model achieved the closest approximation with the price of **$9.489976** with absolute difference less than 0.1 cent.   
+
+
 
