@@ -15,7 +15,8 @@ Last year, we witnessed two devastating realities in the United States: 47,173 A
 
 While firearms are used in less than 10 percent of suicidal attempts, almost half of the suicides attribute to them in 2017, according to the Center for Disease Control and Prevention. However astounding, the total suicides with guns has been historically higher than homicides, accounting for about two thirds of total firearm deaths.
 
-            <img src="overall.png" style="border: none;">
+![overall.png]({{"/assets/article3/overall.png" | absolute_url}})
+
             
 In comparison to the volatile nature of the historical trends in firearm homicides, we observe a steady rate of increase in firearm suicides. Deaths from mass shooting is almost negligible. 
 
