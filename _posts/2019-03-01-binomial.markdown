@@ -10,20 +10,6 @@ The Binomial Options Pricing Model is a lattice-based approach that uses a discr
 
 First proposed by Cox, Ross, and Rubenstein in 19791. Binomial option pricing is a simple but powerful technique that can be used to solve many complex option-pricing problems. 
 
-### Black Scholes Formula Computation
-For comparison, let's use Black Scholes formula.
-
-The Black Scholes formula is used to calculate the theoretical value of European options using current stock prices, the option's strike price, expected interest rates, time to expiration and expected volatility. The call price is  
-
-$$C = S* N(d_{1}) - N(d_{2}) * K* e^{-rT}$$
-
-where $$d_{1} = \frac {ln (S/K) + (r+\sigma^2/2)t}{\sigma\sqrt{t}}$$ and
-$$d_{2} = d_{1} - \sigma\sqrt{t}$$.
-
-The formula is divided into two parts: the first part multiplies the current price by the change in the call premium relative to the change in the underlying price. It represents the expected benefit of purchasing the underlying option. The second part gives the present value of paying the strike price on expiration and the call price is calculated by the difference of the two parts.\  
-
-In this project, Strik price = $120, Expiration time = 1 yr, annual interestrate=0.07, volitility = 0.3, current price = $104.4. By plugging the parameters into the Black Scholes formula, I figured that the theoretical value of this call option is **$9.490328**. 
-
 ### Binomial Tree Approximation 
 Theoretically, the Black Scholes formula, the continuous-time pricing formula, can be approximated by the step increments of binomial tree models. Binomial trees are a discrete pricing model in which we can derive the option price by 
 
@@ -43,7 +29,7 @@ Applying the pricing formula to **European call**, we can then derive the formul
 
 *Note: this is only one way of deriving Black Scholes formula, which arguably is not the fastest method. But it's the first one that I got exposure to and is very intuitive.*
 
-### Numerical Calculation Summary
+### Numerical Calculation
 To conduct the numerical approximation of the binomial tree model to the Black Scholes, I chose to implement the numerical process in **R** - the statistical programming language that allowed me to code out specific steps. For convenience, I set up a series of functions that roll out the necessary steps in calculating the price of the European call at time 0. First, I created a function that returns risk-neutral probability (*function rn_prob(r,deltaT,sigma)*) for use in future steps. In this function, up ($$u = e^{\sigma\sqrt\Delta_{t}}$$) and down ($$d = e^{-\sigma\sqrt\Delta_{t}}$$) factors were set up using the formula under **the Cox-Rox-Rubinson condition**.$\vspace{0.2cm}$\   
 ```r
 #first set up a function that rolls about risk neutral probability
@@ -127,6 +113,21 @@ price_change %>%
 *Note: this gets slower as period increases since this is at $$O(N^{2})$$. Some research leads me to a parallel implementation using the library `parallel` if we want to do something more complicated in the future.
 
 ![result]({{"/assets/article2/num1.png" | absolute_url}})
+
+### Black Scholes Formula Computation
+For comparison, let's use Black Scholes formula.
+
+The Black Scholes formula is used to calculate the theoretical value of European options using current stock prices, the option's strike price, expected interest rates, time to expiration and expected volatility. The call price is  
+
+$$C = S* N(d_{1}) - N(d_{2}) * K* e^{-rT}$$
+
+where $$d_{1} = \frac {ln (S/K) + (r+\sigma^2/2)t}{\sigma\sqrt{t}}$$ and
+$$d_{2} = d_{1} - \sigma\sqrt{t}$$.
+
+The formula is divided into two parts: the first part multiplies the current price by the change in the call premium relative to the change in the underlying price. It represents the expected benefit of purchasing the underlying option. The second part gives the present value of paying the strike price on expiration and the call price is calculated by the difference of the two parts.\  
+
+In this project, Strik price = $120, Expiration time = 1 yr, annual interestrate=0.07, volitility = 0.3, current price = $104.4. By plugging the parameters into the Black Scholes formula, I figured that the theoretical value of this call option is **$9.490328**. 
+
 
 Just out of curiosty, I tried to figure out which step produced the call price closest to the desired one.
 ```r
