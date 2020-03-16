@@ -8,6 +8,7 @@ categories: EDA GunViolence
 
 A Look into the Relationship between Firearm Suicides and Gun Laws in the United States
 
+*<a href="https://danielzzhou.github.io/FirearmSuicideDataJournalism/">Link</a> to the published article: https://danielzzhou.github.io/FirearmSuicideDataJournalism/*
 
             
 Last year, we witnessed two devastating realities in the United States: 47,173 Americans had killed themselves; the firearm death rate hit a 20-year high after 39,773 people died from guns. Behind the two tragic numbers, we may realize that firearm suicide, the grey area that often lacks press attention, accounts for a substantial proportion of the violence epidemic.
@@ -30,7 +31,7 @@ Datasets used in this project are from <a href="https://wonder.cdc.gov/">the Cen
 ## Q1: Are annual gun violence suicide "victims" increasing in recent years? How do the numbers compare to homicide rate?
 To start off, I'd like to figure out the overall trends of gun violence deaths in recent years.
 
-###Q1.1: What's the total death from gun violence in recent years?
+### Q1.1: What's the total death from gun violence in recent years?
 ```r
 # let's start from total gun violence
 cdc %>% 
