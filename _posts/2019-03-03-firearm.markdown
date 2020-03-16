@@ -27,7 +27,6 @@ Within the spiking trend, different states don’t experience the symptoms of th
 
 <center><iframe src="https://public.tableau.com/views/suicide_map/2017?:embed_code_version=3&:loadOrderID=0&:display_count=y&publish=yes&:origin=viz_share_link" width="1004" height="1269" frameborder="0"></iframe></center>
 
-<iframe align = "center" width = "1000" height = "500" src="https://public.tableau.com/views/suicide_map/2017?:embed_code_version=3&:loadOrderID=0&:display_count=y&publish=yes&:origin=viz_share_link"/>
 
 
 
