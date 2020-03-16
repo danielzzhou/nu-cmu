@@ -2,7 +2,7 @@
 @import 'ext/normalize';
 @import 'syntax';
 
-$linkColor: #0A59B0;
+$linkColor: #586e75;
 $mobileW: 768px;
 $smallMobileW: 480px;
 $bigScreenW: 1600px;
@@ -159,6 +159,7 @@ main {
 	padding-left: 50px;
 	padding-right: 200px;
 	padding-top: 20px;
+	padding-right: 50px;
 }
 .post {
 	font-family: 'Ubuntu', sans-serif;
