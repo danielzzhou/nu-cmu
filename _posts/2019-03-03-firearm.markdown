@@ -23,7 +23,7 @@ In comparison to the volatile nature of the historical trends in firearm homicid
 
 Within the spiking trend, different states don’t experience the symptoms of this epidemic equally. 
 
-	<div class='tableauPlaceholder' id='viz1584334835234' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;su&#47;suicide_map&#47;2017&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='suicide_map&#47;2017' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;su&#47;suicide_map&#47;2017&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /></object></div> 
+![2017suicide.png]({{"/assets/article3/2017suicide.png" | absolute_url}})
 
 
 
@@ -74,5 +74,3 @@ Within the spiking trend, different states don’t experience the symptoms of th
 <p><strong>About the story</strong><p>
 <p><em>The data used in this story is compiled from the <a href="https://wonder.cdc.gov/" target="new">Center for Disease Control and Prevention</a>, <a href="https://www.statefirearmlaws.org/national-data" target="new">State Firearm Laws National Database</a>, <a href="https://www.motherjones.com/politics/2012/07/mass-shootings-map/" target="new">Mother Jones Gun Research</a> and <a href="https://www.gunviolencearchive.org/" target="new">Gun Violence Archive</a>.</em></p>
             <p><em>For the original exploratory data analysis, please click <a href="EDA.html">here</a>.</em></p>
-
-
