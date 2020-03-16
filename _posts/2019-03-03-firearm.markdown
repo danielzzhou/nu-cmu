@@ -34,7 +34,7 @@ Within the spiking trend, different states don’t experience the symptoms of th
 <p>Texas and California lead the firearm suicide counts in 2017 with 2,158 and 1,610 respectively. However, if we compare the population-adjusted crude rate, the density map will tell a different story - Montana and West Virginia are leading the rates after the adjustments. While variations occurred in 2010 and 2000, we also see that Montana, Wyoming and West Virginia had high crude rates among the states.</p>
             <br>
 
-            <p><b>How do gun laws fit in?</b></p>
+<p><b>How do gun laws fit in?</b></p>
 
             <p>People across the states have been rallied together behind gun laws to address the gun violence epidemic. However, though hundreds of policy makers and researchers have studied on the effects of specific gun laws, it might still be hasty to conclude if certain legislations have reductive or prohibitive impact on gun violence controls, not to mention firearm suicides with fewer public records.</p>
             <p>Despite the difficulties in causal analysis, people interested in policy impacts can still infer certain relationships between gun laws and suicide rates among states. Surprisingly, there is an observable inverse relationship between the total number of gun laws and the crude suicide rates.</p>
