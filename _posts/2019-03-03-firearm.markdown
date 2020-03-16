@@ -7,7 +7,7 @@ categories: EDA GunViolence
 ---
 A Look into the Relationship between Firearm Suicides and Gun Laws in the United States
 
-<a href="https://danielzzhou.github.io/FirearmSuicideDataJournalism/EDA.html" target="new">Link</a> to the full original Exploratory Data Analysis: https://danielzzhou.github.io/FirearmSuicideDataJournalism/EDA.html
+*<a href="https://danielzzhou.github.io/FirearmSuicideDataJournalism/EDA.html" target="new">Link</a> to the full original Exploratory Data Analysis: https://danielzzhou.github.io/FirearmSuicideDataJournalism/EDA.html*
             
 Last year, we witnessed two devastating realities in the United States: 47,173 Americans had killed themselves; the firearm death rate hit a 20-year high after 39,773 people died from guns. Behind the two tragic numbers, we may realize that firearm suicide, the grey area that often lacks press attention, accounts for a substantial proportion of the violence epidemic.
 
@@ -74,5 +74,5 @@ Within the spiking trend, different states don’t experience the symptoms of th
 <p><strong>About the story</strong><p>
 <p><em>The data used in this story is compiled from the <a href="https://wonder.cdc.gov/" target="new">Center for Disease Control and Prevention</a>, <a href="https://www.statefirearmlaws.org/national-data" target="new">State Firearm Laws National Database</a>, <a href="https://www.motherjones.com/politics/2012/07/mass-shootings-map/" target="new">Mother Jones Gun Research</a> and <a href="https://www.gunviolencearchive.org/" target="new">Gun Violence Archive</a>.</em></p>
             <p><em>For the original exploratory data analysis, please click <a href="EDA.html">here</a>.</em></p>
-            </em>
+
 
