@@ -25,7 +25,7 @@ To answer this question, there are two key terms that needs to be addressed - fi
 2） parts of the EDA visualizations were conducted in Tableau and attached in the notebook 
 
 ## Datasets 
-Datasets used in this project are from the Center for Disease Prevention and Control (https://wonder.cdc.gov/), Gun Violence Archive (https://www.gunviolencearchive.org/), Mother Jones Mass Shooting data （https://www.motherjones.com/politics/2012/07/mass-shootings-map/) and State Firearm Laws National Data(https://www.statefirearmlaws.org/national-data).
+Datasets used in this project are from <a href="https://wonder.cdc.gov/">the Center for Disease Prevention and Control</a>, <a href="https://www.gunviolencearchive.org/">Gun Violence Archive</a>, <a href="https://www.motherjones.com/politics/2012/07/mass-shootings-map/">Mother Jones Mass Shooting data</a> and <a href="https://www.statefirearmlaws.org/national-data">State Firearm Laws National Data</a>.
 
 ## Q1: Are annual gun violence suicide "victims" increasing in recent years? How do the numbers compare to homicide rate?
 To start off, I'd like to figure out the overall trends of gun violence deaths in recent years.
