@@ -17,7 +17,7 @@ Last year, we witnessed two devastating realities in the United States: 47,173 A
 Over the last two decades, suicide rates have risen dramatically across the country. And while firearms are used in less than 10 percent of all suicide attempts, they account for more than half of all suicide deaths. Gun violence and mass shootings make frequent headlines, but nearly two-thirds of firearm deaths are the result of suicide, not homicide.  The goal of this EDA project is to explore firearm suicides and gun laws in the U.S. and how the situation is experienced differently in different states. 
 
 ## Key Question
-#####Do more strict gun legislations infer lower gun violence suicides in the United States?
+##### Do more strict gun legislations infer lower gun violence suicides in the United States?
 To answer this question, there are two key terms that needs to be addressed - firearm suicides and gun laws. This EDA aims to perform analyses on these two terms, their possible correlations and try to find serendipitous insights.
 
 ### Special Note: 
@@ -27,61 +27,11 @@ To answer this question, there are two key terms that needs to be addressed - fi
 ## Datasets 
 Datasets used in this project are from the Center for Disease Prevention and Control (https://wonder.cdc.gov/), Gun Violence Archive (https://www.gunviolencearchive.org/), Mother Jones Mass Shooting data （https://www.motherjones.com/politics/2012/07/mass-shootings-map/) and State Firearm Laws National Data(https://www.statefirearmlaws.org/national-data).
 
-## Preparation
-#####Load packages 
-```{r,warning=FALSE,message=FALSE}
-library(readxl)
-library(tidyverse)
-library(lubridate)
-library(ggplot2)
-library(wesanderson)
-library(scales)
-```
-```{r,warning=FALSE,message=FALSE,include=FALSE}
-#overall trend data
-cdc <- read_xlsx('cdc.xlsx')
-#gun violence data
-gun_v<-read_csv('gun_violence_archive.csv')[,-1]
-#cdc age by year
-agebyyear<-na.omit(read_delim('agebyyear.txt',delim="\t")[,c(3,4,6)])
-#cdc gender by year
-genderbyyear<-na.omit(read_delim('genderbyyear.txt',delim="\t")[,c(3,4,6)]) 
-#cdc race by year
-racebyyear<-na.omit(read_delim('racebyyear.txt',delim="\t")[,c(2,4,6)]) 
-#cdc state by year
-state<-na.omit(read_delim('state.txt',delim="\t")[,c(2,4:6)]) 
-#law data
-```
-####Data manipulation
-```{r include=FALSE}
-#cdc$year<- as.POSIXct(ISOdate(cdc$year,12,31))
-agebyyear$`Ten-Year Age Groups Code` <- factor(agebyyear$`Ten-Year Age Groups Code`,levels = c('1-4','5-14','15-24','25-34','35-44','45-54','55-64','65-74','75-84','85+'),ordered=TRUE)
-agebyyear$Year<-as.POSIXct(ISOdate(agebyyear$Year,12,31))
-```
-```{r include=FALSE}
-#gender
-genderbyyear$Year<-as.POSIXct(ISOdate(genderbyyear$Year,12,31))
-genderbyyear$`Gender Code`<-ifelse(genderbyyear$`Gender Code`=='F','Female','Male')
-genderbyyear$`Gender Code` <- factor(genderbyyear$`Gender Code`,levels = c('Male','Female'),ordered=TRUE)
-```
-```{r include=FALSE}
-#race
-racebyyear$Year<-as.POSIXct(ISOdate(racebyyear$Year,12,31))
-```
-```{r include=FALSE}
-#state
-racebyyear$Year<-as.POSIXct(ISOdate(racebyyear$Year,12,31))
-```
-For clarity of the notebook, the data loading and manipulation process is excluded from R markdown output.
-
 ## Q1: Are annual gun violence suicide "victims" increasing in recent years? How do the numbers compare to homicide rate?
 To start off, I'd like to figure out the overall trends of gun violence deaths in recent years.
-```{r include=FALSE}
-#let's first do the cumulative sum calculation and use 2000 as base year
-#cdc$cumtotal <- cumsum(cdc$total)
-```
+
 ###Q1.1: What's the total death from gun violence in recent years?
-```{r}
+```r
 # let's start from total gun violence
 cdc %>% 
   ggplot(aes(x=year))+
@@ -93,9 +43,9 @@ cdc %>%
   scale_x_datetime(labels = date_format("%Y"),
                      date_breaks = "3 year")
 ```
-<br/>From there we can see an increasing trend (with a steeper  slop from around 2015) in the overall number of gun violence victims.
-###Q1.2: What's the total death from gun violence suicide in recent years?
-```{r warning=FALSE}
+From there we can see an increasing trend (with a steeper  slop from around 2015) in the overall number of gun violence victims.
+### Q1.2: What's the total death from gun violence suicide in recent years?
+```r
 #suicide
 cdc %>% 
   ggplot(aes(x=year))+
@@ -107,9 +57,9 @@ cdc %>%
   scale_x_datetime(labels = date_format("%Y"),
                      date_breaks = "3 year")
 ```
-<br/>In comparison to the total number, we can see a even steeper slope of the increase in firearm suicide victims since 2008.
-###Q1.3: What about homicide?
-```{r warning=FALSE}
+In comparison to the total number, we can see a even steeper slope of the increase in firearm suicide victims since 2008.
+### Q1.3: What about homicide?
+```r
 #homicide
 cdc %>% 
   ggplot(aes(x=year))+
@@ -121,9 +71,9 @@ cdc %>%
   scale_x_datetime(labels = date_format("%Y"),
                      date_breaks = "3 year")
 ```
-<br/>On the contrary, the pattern from firearm homicide is relatively unpredictable - we saw an increase in 2015 to 2017 but previously there were downward trends.
-###Q1.3: What about mass shooting?
-```{r}
+On the contrary, the pattern from firearm homicide is relatively unpredictable - we saw an increase in 2015 to 2017 but previously there were downward trends.
+### Q1.3: What about mass shooting?
+```r
 #mass shooting
 cdc %>% 
   ggplot(aes(x=year))+
@@ -135,8 +85,8 @@ cdc %>%
   scale_x_datetime(labels = date_format("%Y"),
                      date_breaks = "3 year")
 ```
-<br/>Mass shooting victims, while getting the most press attention, were even more unpredictable. I am unable to conclude a trend from the graph.<br/>
-```{r warning=FALSE}
+Mass shooting victims, while getting the most press attention, were even more unpredictable. I am unable to conclude a trend from the graph.<br/>
+```r
 #putting together
 cols <- c("total" = "#003f5c", "homicide" = "#bc5090", "suicide" = "#58508d","mass"="#ff6361")
 cdc1<-cdc %>% 
@@ -153,72 +103,64 @@ cdc1%>%
   scale_x_datetime(labels = date_format("%Y"),
                      date_breaks = "3 year") 
 ```
-<br/>Now if I put these four line graphs together, we can have a more clear picture. First we can see that mass shooting victims are almost negligible. In addition, we can see that the ratio of homicide and suicide is almost 1:2 in recently years, i.e. almost two thirds of the total gun violence victims. This is relatively surprising because though as homicides attract more media attention, it might be hard to believe that suicide totals almost double firearm homicides.<br/>
+Now if I put these four line graphs together, we can have a more clear picture. First we can see that mass shooting victims are almost negligible. In addition, we can see that the ratio of homicide and suicide is almost 1:2 in recently years, i.e. almost two thirds of the total gun violence victims. This is relatively surprising because though as homicides attract more media attention, it might be hard to believe that suicide totals almost double firearm homicides.<br/>
 ##Q2 Do Americans experience the gun violence epidemic differently?
-```{r echo=FALSE, out.width = '100%'}
-knitr::include_graphics("2017suicide.png")
-```
+
+![2017suicide.png]({{"/assets/article3/2017suicide.png" | absolute_url}})
+
 This is the total death from firearm suicide in 2017 on state level. If we look at the absolute numbers in each state on the top percentile map, we can see that Texas and California lead the numbers with 2,158 and 1,610 in total death in 2017. However, I realized that these two states have high population concentration at the same time. So on the below I included the crude rate of firearm suicide adjusted by total population in the state. This graph tells a different story - Montana and West Virginia are leading the rates after the adjustments. <br/>
 A similar analysis is performed on the total firearm suicides since 2000. We also see that while Texas and California lead the absolute firearm suicide deaths, Montana, Wyoming and West Virginia have high crude rates.<br/>
 If we look more carefully into the numbers, we can see that the ones with high crude suicidal rates, such as Wyoming, Motana and West Virginia in fact have relatively low absolute numbers in suicide deaths. This led me to think about some census characteristics between states.<br/>
 ### Q2.2 Do high crude suicidal rates relate to census poverty rate?
-```{r echo=FALSE, out.width = '100%'}
-knitr::include_graphics("poverty.png")
-```
+![poverty.png]({{"/assets/article3/poverty.png" | absolute_url}})
 While West Virginia is a state with relatively high suicidal rate and high poverty rate, the top rates in fact do not perfectly match with each other. Further modeling diagnostics might be required to see how census democratics might correlate to the high suicidal rate.<br/>
 ##Q3: How do the total number of gun laws relate to firearm suicides?
 After understanding the trends in total suicide, especially in each state, I moved on to have a look at the gun laws. With the data in hand, the first assumption I made is that the more laws imposed in a state, the more strict the state is on gun legislations. How do these laws relate to suicide incidents? Let's have a look. 
-```{r echo=FALSE,  out.width = '100%'}
-knitr::include_graphics("2017lawvssuicide_abs.png")
-```
-<br/>As we can see from the graph, the relationship is inconspicuous. We can see that Massachusetts and Connecticut have great amount of laws and the gun violence suicide numbers are among the lowest. On the contrary, Texas and Florida have only about 20 pieces of gun violence laws but their firearm suicide deaths are among the highest. Interestingly, we also see California is a special case where both the numbers of gun laws and suicide deaths remain high.<br/>
+![2017lawvssuicide_abs.png]({{"/assets/article3/2017lawvssuicide_abs.png" | absolute_url}})
+
+As we can see from the graph, the relationship is inconspicuous. We can see that Massachusetts and Connecticut have great amount of laws and the gun violence suicide numbers are among the lowest. On the contrary, Texas and Florida have only about 20 pieces of gun violence laws but their firearm suicide deaths are among the highest. Interestingly, we also see California is a special case where both the numbers of gun laws and suicide deaths remain high.<br/>
 Interesting. But I soon realized a similar case to before - the population concentration might still play a role! So I re-performed the analysis using the crude rate.<br/>
-```{r echo=FALSE, out.width = '100%'}
-knitr::include_graphics("2017lawvssuicide_crude.png")
-```
-<br/> The pattern became more clear if we connect total law number with crude suicide rate in states. We can see that the states with fewer total laws have a higher crude suicidal rate - led by Montana and Wyoming (familiar?). While California have high number of gun laws and absolute suicide deaths, its dense population shrinks the crude suicidal rate down. Looking at the graph, I am surprised that there is actually an observable negative relationship between the total number of gun laws and the crude suicide rate.
-```{r echo=FALSE, out.width = '100%'}
-knitr::include_graphics("2010lawvssuicide_crude.png")
-```
-```{r echo=FALSE, out.width = '100%'}
-knitr::include_graphics("2000lawvssuicide_crude.png")
-```
+
+![2017lawvssuicide_crude.png]({{"/assets/article3/2017lawvssuicide_crude.png" | absolute_url}})
+
+The pattern became more clear if we connect total law number with crude suicide rate in states. We can see that the states with fewer total laws have a higher crude suicidal rate - led by Montana and Wyoming (familiar?). While California have high number of gun laws and absolute suicide deaths, its dense population shrinks the crude suicidal rate down. Looking at the graph, I am surprised that there is actually an observable negative relationship between the total number of gun laws and the crude suicide rate.
+
+![2010lawvssuicide_crude.png]({{"/assets/article3/2010lawvssuicide_crude.png" | absolute_url}})
+
+![2000lawvssuicide_crude.png]({{"/assets/article3/2000lawvssuicide_crude.png" | absolute_url}})
+
 <br/> In addition to the relationship in 2017, I also picked out the data from 2000 and 2010 to create a similar visualization. As we see from these two visualizations, the pattern is still observable even though there are variations of the specific suicide rates in different states.
 <br/> However, the exploration should not end here. After further reviewing the list of gun laws, I found that some laws such as gun trafficking, immunity and ammunitions seem to be designed solely for the control of gun violence homicide. Through outside research, I found some categories that might reduce firearm suicides.
 
-##Q4: Do states with specific gun laws on high risk prohibition have low firearm suicide victims?
+## Q4: Do states with specific gun laws on high risk prohibition have low firearm suicide victims?
 The first category of gun legislation that might foster a reduction effect is the prohibition for high risk possessions. This is a broad category that includes mental health (Firearm possession is prohibited for people who have been involuntarily committed to an inpatient facility, Firearm possession is prohibited if person is deemed by court to be a danger to oneself or others), alcohol(Firearm possession is prohibited for some people with alcoholism)， etc. First, I hope to perform a similar analysis to the one above using the subset of high risk prohibition data.
-```{r echo=FALSE, out.width = '100%'}
-knitr::include_graphics("hrplawvssuicide.png")
-```
-<br/>From the graph, we observe a similar trend as before. Since the maximum of high risk laws is 10, the residual error from the negative linear relationship seem to be larger than the pattern from the total gun violence laws. <br/>
+![hrplawvssuicide.png]({{"/assets/article3/hrplawvssuicide.png" | absolute_url}})
+
+From the graph, we observe a similar trend as before. Since the maximum of high risk laws is 10, the residual error from the negative linear relationship seem to be larger than the pattern from the total gun violence laws. <br/>
 Let's then zoom in pick out some specific high risk prohibition laws.
-###Q4.2 Are the high risk prohibition laws in "mental health danger" infer lower crude suicide rate?
-```{r echo=FALSE, out.width = '100%'}
-knitr::include_graphics("mentalhealthdanger.png")
-```
-<br/>Here in the graph, I sliced three years to observe the effect. From 2000 to 2017, we can gradually see that the crude suicidal rates of states with high rsik prohibition law on mental health danger and those without the legislation gradually diverge: the crude suicidal rates on the lower ends all belong to states with such law enforcement; the states with high rates, namely Wyoming, Montana and Alaska, do not have such law imposed (with West Virginia as an exception.)
+### Q4.2 Are the high risk prohibition laws in "mental health danger" infer lower crude suicide rate?
+![mentalhealthdanger.png]({{"/assets/article3/mentalhealthdanger.png" | absolute_url}})
+
+Here in the graph, I sliced three years to observe the effect. From 2000 to 2017, we can gradually see that the crude suicidal rates of states with high rsik prohibition law on mental health danger and those without the legislation gradually diverge: the crude suicidal rates on the lower ends all belong to states with such law enforcement; the states with high rates, namely Wyoming, Montana and Alaska, do not have such law imposed (with West Virginia as an exception.)
 ###Q4.3 Are the high risk prohibition laws in "drug misdemeanor" infer lower crude suicide rate?
 The drug misdemeanor law belongs to the prohibition for high-risk gun possession category and it says that "Firearm possession is prohibited for people with a drug misdemeanor conviction." I created a similar graph to the one above regarding this law.
-```{r echo=FALSE, out.width = '100%'}
-knitr::include_graphics("drug.png")
-```
-<br/>From the graph above, we can see a more conspicuous relationship between the drug demeanor law and crude suicidal rate, where most states with drug misdemeanor laws aggregate on the left (low suicidal rate) and others aggregate on the right. 
-###Q4.3 How about high risk prohibition laws in "alcoholism"?
-The high risk prohibition law in alcoholism statest that "Firearm possession is prohibited for some people with alcoholism." A similar analysis is performed below.
-```{r echo=FALSE, out.width = '100%'}
-knitr::include_graphics("alcoholism.png")
-```
-<br/> This time, the effect does not seem to be obvious. This might be partially due to the lack of observations (states) with such law enforced so they appear more spread out on the crude suicidal rate scale.<br/>
+![drug.png]({{"/assets/article3/drug.png" | absolute_url}})
 
-##Q5: Do states with the gun law on waiting period low firearm suicide victims?
+From the graph above, we can see a more conspicuous relationship between the drug demeanor law and crude suicidal rate, where most states with drug misdemeanor laws aggregate on the left (low suicidal rate) and others aggregate on the right. 
+
+### Q4.3 How about high risk prohibition laws in "alcoholism"?
+The high risk prohibition law in alcoholism statest that "Firearm possession is prohibited for some people with alcoholism." A similar analysis is performed below.
+![alcoholism.png]({{"/assets/article3/alcoholism.png" | absolute_url}})
+
+This time, the effect does not seem to be obvious. This might be partially due to the lack of observations (states) with such law enforced so they appear more spread out on the crude suicidal rate scale.
+
+## Q5: Do states with the gun law on waiting period low firearm suicide victims?
 Another important law that might induce low suicidal rate is the law on waiting period. More specifically, it states that "a waiting period is required on all handgun purchases from dealers." Waiting periods may delay the impulsive purchase of a handgun, which could reduce the likelihood that gun would be used in a suicide attempt if the moment of crisis passes prior to the purchaser taking possession of the gun.<br/>
-```{r echo=FALSE, out.width = '100%'}
-knitr::include_graphics("waiting.png")
-```
+![waiting.png]({{"/assets/article3/waiting.png" | absolute_url}})
+
 <br/>We can also observe that waiting period seem to closely relate to low suicidal rate since the yellow dots all aggregate on the lower side of the scale. 
 
-##Conclusion:
+## Conclusion:
 In the United States, suicides outnumber homicides almost two to one. Perhaps the real tragedy behind suicide deaths is that  many could be prevented to some extent. While Texas and California led the highest absolute suicide deaths among the states, states like Wyoming, Montana and Alaska have higher suicidal rate if we adjust the death by in-state population. <br/> 
 Do more strict gun legislations infer lower gun violence suicides in the United States? The answer is likely to be a "Yes." Different states have different approaches in gun law legislation, thus a completely different length of gun laws (while California has 106 pieces of laws, states like Idaho, Mississipi and Alaska only has two to three). States with more gun legislations in general show a low suicide rate adjust by its population; those with high sucidal rate ususally lack gun law legislations.Some gun laws that tied to suicidal prevention such as mental health danger prohibition, drug prohibition and the imposition of a waiting period do show a close relationship with low suicidal rate in the states.<br/>
 However, the result from the exploratory data analysis should be considered with caution. As noted in the beginning, this is not a scientific research on the causal modelling of gun laws and suicide rates so the causal effect of gun laws on suicides is unclear. There might be in fact some omitted variables that account for the negative correlation between the two broad factors that I studied in this analysis.<br/>
