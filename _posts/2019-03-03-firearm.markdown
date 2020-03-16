@@ -12,10 +12,6 @@ a look into the relationship between firearm suicides and gun laws in the United
             
 Last year, we witnessed two devastating realities in the United States: 47,173 Americans had killed themselves; the firearm death rate hit a 20-year high after 39,773 people died from guns. Behind the two tragic numbers, we may realize that firearm suicide, the grey area that often lacks press attention, accounts for a substantial proportion of the violence epidemic. </p>
 
-<iframe src="https://drawit.mucollective.co/vis/uxZQU3V2xrUIipF5tLmlJhKedV82/-L_Q88ogswWjeSPRIEEE"
-            width="700px"
-            height="500px" style="border:none;"></iframe>
-
 
 While firearms are used in less than 10 percent of suicidal attempts, almost half of the suicides attribute to them in 2017, according to the Center for Disease Control and Prevention. However astounding, the total suicides with guns has been historically higher than homicides, accounting for about two thirds of total firearm deaths.
 
@@ -23,11 +19,11 @@ While firearms are used in less than 10 percent of suicidal attempts, almost hal
             
 In comparison to the volatile nature of the historical trends in firearm homicides, we observe a steady rate of increase in firearm suicides. Deaths from mass shooting is almost negligible. 
 
-            <p><b>The Geographical Differences across States</b></p>
+<p><b>The Geographical Differences across States</b></p>
 
-            <p>Within the spiking trend, different states don’t experience the symptoms of this epidemic equally. </p>
+Within the spiking trend, different states don’t experience the symptoms of this epidemic equally. 
 
-            <div class='tableauPlaceholder' id='viz1552538271790' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;su&#47;suicide_map&#47;2017&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='suicide_map&#47;2017' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;su&#47;suicide_map&#47;2017&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>   
+<div class='tableauPlaceholder' id='viz1552538271790' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;su&#47;suicide_map&#47;2017&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='suicide_map&#47;2017' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;su&#47;suicide_map&#47;2017&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>   
             <br>   
 
             <p>Texas and California lead the firearm suicide counts in 2017 with 2,158 and 1,610 respectively. However, if we compare the population-adjusted crude rate, the density map will tell a different story - Montana and West Virginia are leading the rates after the adjustments. While variations occurred in 2010 and 2000, we also see that Montana, Wyoming and West Virginia had high crude rates among the states.</p>
