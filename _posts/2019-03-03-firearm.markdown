@@ -34,15 +34,15 @@ Within the spiking trend, different states don’t experience the symptoms of th
 <p>People across the states have been rallied together behind gun laws to address the gun violence epidemic. However, though hundreds of policy makers and researchers have studied on the effects of specific gun laws, it might still be hasty to conclude if certain legislations have reductive or prohibitive impact on gun violence controls, not to mention firearm suicides with fewer public records.</p>
 <p>Despite the difficulties in causal analysis, people interested in policy impacts can still infer certain relationships between gun laws and suicide rates among states. Surprisingly, there is an observable inverse relationship between the total number of gun laws and the crude suicide rates.</p>
 
-            <img src="2017totallawvssuicide.png" style="border: none;">
-            <br>
+![2017totallawvssuicide.png]({{"/assets/article3/2017totallawvssuicide.png" | absolute_url}})
+
 
 <p>The gun legislations vary significantly among states: California and Massachusetts are leading with 106 pieces of laws in 2017 in categories like deal and buyer regulations, and prohibitions for high-risk gun possession (Massachusetts had been the most strict since at least 1991 and California has been making additions and modifications in recent years); Wyoming, Alaska and Montana are aggregated on the other side of the scale with gun laws as few as five.</p> 
 
 <p>On the list of all possible 130 pieces of gun laws, however, much effort was put into gun legislations in categories like “ammunition regulations”, “concealed carry permitting” and “assault weapons and large-capacity magazines,” which seem to have more effects on firearm homicide prevention. According to Cassandra Crifasi, assistant professor of public health at Johns Hopkins University, while suicide prevention requires a holistic approach, some evidence-based gun policies, such as permit-to-purchase laws and waiting period impositions, are more associated with reductions in firearms suicide.</p>
 
-            <img src="hrpvssuicide.png" style="border: none;">
-            <br>
+![hrpvssuicide.png]({{"/assets/article3/hrpvssuicide.png" | absolute_url}})
+
 
 <p>One category of gun legislation that might foster a reduction effect is the prohibition for high risk possessions. This is a broad category that includes prohibition of gun ownership among people with mental health danger, alcoholism, etc. The linear relationship between high risk prohibition gun laws and suicide rates has lost some significance but it is still roughly observable.</p> 
             
