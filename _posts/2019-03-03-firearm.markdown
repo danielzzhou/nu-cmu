@@ -6,7 +6,7 @@ date: '2019-03-03 21:03:36 +0530'
 categories: EDA GunViolence
 ---
 
-a look into the relationship between firearm suicides and gun laws in the United States
+A Look into the Relationship between Firearm Suicides and Gun Laws in the United States
 
 
             
