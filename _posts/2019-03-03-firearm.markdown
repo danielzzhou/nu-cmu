@@ -24,7 +24,11 @@ In comparison to the volatile nature of the historical trends in firearm homicid
 Within the spiking trend, different states don’t experience the symptoms of this epidemic equally. 
  
 
-<center><iframe src="https://public.tableau.com/views/suicide_map/2017?:embed_code_version=3&:loadOrderID=0&:display_count=y&publish=yes&:origin=viz_share_link" width="1004" height="1269" frameborder="0"></iframe></center>
+<center><iframe src="https://public.tableau.com/views/suicide_map/2017?:embed_code_version=3&:loadOrderID=0&:display_count=y&publish=yes&:origin=viz_share_link" width="1004" height="500" frameborder="0"></iframe></center>
+
+<center><iframe src="https://public.tableau.com/views/ATaleof50Cities/ATaleof50Cities?:embed=y&:display_count=yes&:toolbar=no" width="1004" height="1269" frameborder="0"></iframe></center>
+
+Note that if you see a share link for the Original View or Current View, use the Original View.
 
 
 
