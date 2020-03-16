@@ -28,7 +28,6 @@ Within the spiking trend, different states don’t experience the symptoms of th
 
 
 <p>Texas and California lead the firearm suicide counts in 2017 with 2,158 and 1,610 respectively. However, if we compare the population-adjusted crude rate, the density map will tell a different story - Montana and West Virginia are leading the rates after the adjustments. While variations occurred in 2010 and 2000, we also see that Montana, Wyoming and West Virginia had high crude rates among the states.</p>
-            <br>
 
 <p><b>How do gun laws fit in?</b></p>
 
