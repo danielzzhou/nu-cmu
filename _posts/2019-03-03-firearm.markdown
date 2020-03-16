@@ -3,7 +3,7 @@ published: true
 layout: post
 title: 'Are Gun Laws a Remedy for the Suicidal Epidemic? '
 date: '2019-03-03 21:03:36 +0530'
-categories: 'EDA, GunViolence'
+categories: EDA GunViolence
 ---
 
 a look into the relationship between firearm suicides and gun laws in the United States
