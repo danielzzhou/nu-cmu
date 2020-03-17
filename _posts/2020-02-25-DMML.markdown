@@ -89,7 +89,7 @@ Zooming in, we find that the Quadratic Discriminant Analysis achieved a relative
 
 ![distribution of posterior probabilities by QDA model]({{"/assets/article1/qda.png" | absolute_url}})
 
-<img src={{"/assets/article1/qda.png" | absolute_url}} alt="distribution of posterior probabilities by Random Forest model" style="width:50%;align:center"/>
+<img src="/assets/article1/qda.png" alt="distribution of posterior probabilities by Random Forest model" style="width:50%;align:center"/>
 
 *Figure 2. distribution of posterior probabilities by QDA model*
 
