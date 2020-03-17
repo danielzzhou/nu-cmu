@@ -145,7 +145,7 @@ table2 <- data.frame(Model, LongShortStrategySharpeRatio, LongOnlyStrategySharpe
 kable(table2)
 ```
 | Model 	| LongShortStrategySharpeRatio 	| LongOnlyStrategySharpeRatio 	|
-|---------------------------------	|------------------------------	|-----------------------------	|
+|---------------------------------	|:----------------------------:	|:----------------------------	|
 | Quadratic Discriminant Analysis 	| 0.3954 	| 1.0283 	|
 | Random Forest 	| 0.0684 	| 0.3528 	|
 | XGBoost 	| 0.1263 	| 0.4167 	|
