@@ -109,7 +109,7 @@ We re-examine the ROC curve, misclassification rate, and top 1000 score after ap
 
 ![distribution of posterior probabilities by Random Forest model]({{"/assets/article1/rf.png" | absolute_url}})
 
-<img src={"/assets/article1/rf.png" | absolute_url} alt="distribution of posterior probabilities by Random Forest model" style="width:50%;align:center"/>
+<img src="/assets/article1/rf.png" alt="distribution of posterior probabilities by Random Forest model" style="width:50%;align:center"/>
 
 
 *Figure 3. distribution of posterior probabilities by Random Forest model*
