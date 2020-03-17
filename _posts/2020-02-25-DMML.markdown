@@ -79,6 +79,8 @@ The model predictions are assessed on the validation set. With a base rate of 49
 
 
 ![roccrosssection.png]({{"/assets/article1/roccrosssection.png" | absolute_url}})
+
+
 *Figure 1: ROC curves for cross-sectional predictions (left) and in-period predictions (right) by each model*
 
 With an almost 0% misclassification rate and ideal ROC curves, we can ensure that the constructed features have high explanatory power of in-period returns. However, the models do not generalize well, leaving us very different results from the deep learning framework of the original paper. All misclassification rates are not significantly different from the base rate; regarding the top 1000 rate, tree-based models (random forest and XGBoost) in fact have worse performance than more fundamental ones. 
@@ -86,25 +88,24 @@ With an almost 0% misclassification rate and ideal ROC curves, we can ensure tha
 Zooming in, we find that the Quadratic Discriminant Analysis achieved a relatively high Top 1000 score despite its mediocre performance on other metrics. Figure 2 shows the predicted posterior probability distribution of the QDA model. The distribution signifies the fact that without an assumption of the class distributions, QDA is able to capture the tail probability relatively well, i.e. allocates higher posterior probabilities on edges and results in the high Top 1000 Sucess rate.
 
 ![distribution of posterior probabilities by QDA model]({{"/assets/article1/qda.png" | absolute_url}})
+
+
 *Figure 2. distribution of posterior probabilities by QDA model*
 
 #### 2. WFA results
 We re-examine the ROC curve, misclassification rate, and top 1000 score after applying WFA on random forest. The improvement is not significantly different from not applying WFA, but the results showed clearer patterns for further analysis. 
-```{r echo=FALSE, fig.cap="distribution of posterior probabilities by QDA model", out.width = '40%',fig.align='center'}
-knitr::include_graphics("rf.png")
-```
+
 ![distribution of posterior probabilities by Random Forest model]({{"/assets/article1/pdp.png" | absolute_url}})
+
+
 *Figure 3. distribution of posterior probabilities by Random Forest model*
 
-```{r echo=FALSE, fig.cap="Partial Dependence Plots for features Momentum2 and Beta10", out.width = '40%',fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("pdp1.png","pdp2.png"))
-```
+
 ![Partial Dependence Plots for features Momentum2 and Beta10]({{"/assets/article1/qda.png" | absolute_url}})
+
+
 *Figure 4. Partial Dependence Plots for features Momentum2 and Beta10*
 
-```{r echo=FALSE, fig.cap="boxplot of feature momentum1 in two response classes", out.width = '40%',fig.show='hold',fig.align='center'}
-knitr::include_graphics("box.png")
-```
 The posterior probability distribution plot showed that the random forest made a separation between two classes. The distribution of class 0’s posterior probability is shifted left.
 
 The partial dependence plots (Figure 4) from random forest also showed some discovery. We picked a representative for each kind of feature, momentum, alpha, beta, and market return. Alpha had no contribution to the distinguishing process. But the classification showed threshold behaviors with respect to momentum, beta, and market return.
@@ -112,6 +113,8 @@ The partial dependence plots (Figure 4) from random forest also showed some disc
 We then go back and draw boxplots to identify if there is a relationship between X and Y. Most of the plots showed that some features can provide tiny predictability (full set of graphs in the appendix). For instance, the momentum box plot (Figure 5) indicates a mean reversion effect, i.e. low momentum in the past, high return in the future. Class 1 observations are generally shifted downward compared with class 0 observations, and they were detected by our models.
 
 ![boxplot of feature momentum1 in two response classes]({{"/assets/article1/box.png" | absolute_url}})
+
+
 *Figure 5. boxplot of feature momentum1 in two response classes*
 
 In general, WFA moderately addresses non-stationary issues and provides insights on the model’s performances. Random forest model didn’t fail, it achieved some separation in the data, but the separation is not enough for good classification performance.
@@ -122,7 +125,9 @@ Following the backtesting strategy described in section 2.4, we generate a plot 
 knitr::include_graphics("backtest.png")
 ```
 ![Backtesting PnL Outcome]({{"/assets/article1/backtest.png" | absolute_url}})
-*Figure 6. "Long-Short"(left) and "Long-Only" Backtesting PnL Outcome *
+
+
+*Figure 6. "Long-Short"(left) and "Long-Only"(right) Backtesting PnL Outcome *
 
 Examining the plots on the left of Figure 6, we notice that the average performance of the strategies does not outperform our benchmark. In fact, except for the QDA strategy between around 2009 and 2012, none of the strategies in any time period outperform the S&P 500 index. Even though the QDA strategy behaves nicely between 2009 and 2012, topping the benchmark, the performance of the strategy tumbles for the later period. Additionally, we observe that the strategies generated by random forest and XGBoost performed miserably from 2000 to 2016. Even though the performance of both strategies improves from 2016, the improvement is not enough to compensate for the loss in the previous time period. 
 
