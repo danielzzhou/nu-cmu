@@ -90,21 +90,18 @@ Zooming in, we find that the Quadratic Discriminant Analysis achieved a relative
 
 #### 2. WFA results
 We re-examine the ROC curve, misclassification rate, and top 1000 score after applying WFA on random forest. The improvement is not significantly different from not applying WFA, but the results showed clearer patterns for further analysis. 
-```{r echo=FALSE, fig.cap="distribution of posterior probabilities by QDA model", out.width = '40%',fig.align='center'}
-knitr::include_graphics("rf.png")
-```
+
 ![distribution of posterior probabilities by Random Forest model]({{"/assets/article1/pdp.png" | absolute_url}})
+
+
 *Figure 3. distribution of posterior probabilities by Random Forest model*
 
-```{r echo=FALSE, fig.cap="Partial Dependence Plots for features Momentum2 and Beta10", out.width = '40%',fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("pdp1.png","pdp2.png"))
-```
+
 ![Partial Dependence Plots for features Momentum2 and Beta10]({{"/assets/article1/qda.png" | absolute_url}})
+
+
 *Figure 4. Partial Dependence Plots for features Momentum2 and Beta10*
 
-```{r echo=FALSE, fig.cap="boxplot of feature momentum1 in two response classes", out.width = '40%',fig.show='hold',fig.align='center'}
-knitr::include_graphics("box.png")
-```
 The posterior probability distribution plot showed that the random forest made a separation between two classes. The distribution of class 0’s posterior probability is shifted left.
 
 The partial dependence plots (Figure 4) from random forest also showed some discovery. We picked a representative for each kind of feature, momentum, alpha, beta, and market return. Alpha had no contribution to the distinguishing process. But the classification showed threshold behaviors with respect to momentum, beta, and market return.
@@ -112,6 +109,8 @@ The partial dependence plots (Figure 4) from random forest also showed some disc
 We then go back and draw boxplots to identify if there is a relationship between X and Y. Most of the plots showed that some features can provide tiny predictability (full set of graphs in the appendix). For instance, the momentum box plot (Figure 5) indicates a mean reversion effect, i.e. low momentum in the past, high return in the future. Class 1 observations are generally shifted downward compared with class 0 observations, and they were detected by our models.
 
 ![boxplot of feature momentum1 in two response classes]({{"/assets/article1/box.png" | absolute_url}})
+
+
 *Figure 5. boxplot of feature momentum1 in two response classes*
 
 In general, WFA moderately addresses non-stationary issues and provides insights on the model’s performances. Random forest model didn’t fail, it achieved some separation in the data, but the separation is not enough for good classification performance.
