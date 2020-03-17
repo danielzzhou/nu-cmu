@@ -86,7 +86,7 @@ The model predictions are assessed on the validation set. With a base rate of 49
 | XGBoost 	| 48.93%	| 52.40%	|
 
 
-*Table 1. metrics for classification models*
+<p align="center"><em>Table 1. metrics for classification models</p></em>
 
 
 With an almost 0% misclassification rate and ideal ROC curves, we can ensure that the constructed features have high explanatory power of in-period returns. However, the models do not generalize well, leaving us very different results from the deep learning framework of the original paper. All misclassification rates are not significantly different from the base rate; regarding the top 1000 rate, tree-based models (random forest and XGBoost) in fact have worse performance than more fundamental ones. 
@@ -102,7 +102,7 @@ Zooming in, we find that the Quadratic Discriminant Analysis achieved a relative
 
 ![distribution of posterior probabilities by QDA model]({{"/assets/article1/qda.png" | absolute_url}})
 
-<img src="/assets/article1/qda.png" alt="distribution of posterior probabilities by Random Forest model" style="width:50%;align:center"/>
+<img src="/assets/article1/qda.png" alt="distribution of posterior probabilities by Random Forest model" style="width:50%"/>
 
 <p align="center"><em>Figure 2. distribution of posterior probabilities by QDA model</em></p>
 
