@@ -107,9 +107,7 @@ Zooming in, we find that the Quadratic Discriminant Analysis achieved a relative
 #### 2. WFA results
 We re-examine the ROC curve, misclassification rate, and top 1000 score after applying WFA on random forest. The improvement is not significantly different from not applying WFA, but the results showed clearer patterns for further analysis. 
 
-![distribution of posterior probabilities by Random Forest model]({{"/assets/article1/rf.png" | absolute_url}})
-
-<img src="/nu-cmu/assets/article1/rf.png" alt="distribution of posterior probabilities by Random Forest model" style="width:70%"/>
+<img src="/nu-cmu/assets/article1/rf.png" alt="distribution of posterior probabilities by Random Forest model" style="width:50%"/>
 
 <p align="center"><em>Figure 3. distribution of posterior probabilities by Random Forest model</em></p>
 
@@ -126,7 +124,7 @@ The partial dependence plots (Figure 4) from random forest also showed some disc
 We then go back and draw boxplots to identify if there is a relationship between X and Y. Most of the plots showed that some features can provide tiny predictability (full set of graphs in the appendix). For instance, the momentum box plot (Figure 5) indicates a mean reversion effect, i.e. low momentum in the past, high return in the future. Class 1 observations are generally shifted downward compared with class 0 observations, and they were detected by our models.
 
 
-<img src="/nu-cmu/assets/article1/box.png" alt="boxplot of feature momentum1 in two response classes" style="width:70%"/>
+<img src="/nu-cmu/assets/article1/box.png" alt="boxplot of feature momentum1 in two response classes" style="width:50%"/>
 
 <p align="center"><em>Figure 5. boxplot of feature momentum1 in two response classes</em></p>
 
