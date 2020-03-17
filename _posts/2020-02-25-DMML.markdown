@@ -144,6 +144,8 @@ LongOnlyStrategySharpeRatio <-c('1.0283','0.3528','0.4167','0.9918')
 table2 <- data.frame(Model, LongShortStrategySharpeRatio, LongOnlyStrategySharpeRatio)
 kable(table2)
 ```
+
+
 | Model 	| LongShortStrategySharpeRatio 	| LongOnlyStrategySharpeRatio 	|
 |---------------------------------	|:----------------------------:	|:----------------------------	|
 | Quadratic Discriminant Analysis 	| 0.3954 	| 1.0283 	|
