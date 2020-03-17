@@ -149,7 +149,7 @@ Aside from the curve, we also calculate the Sharpe ratio for both long-short and
 
 
 | Model 	| LongShortStrategySharpeRatio 	| LongOnlyStrategySharpeRatio 	|
-|---------------------------------	|:------------------------------:	|:----------------------------	|
+|---------------------------------	|:---------------------------------:	|:-------------------------------	|
 | Quadratic Discriminant Analysis 	| 0.3954 	| 1.0283 	|
 | Random Forest 	| 0.0684 	| 0.3528 	|
 | XGBoost 	| 0.1263 	| 0.4167 	|
