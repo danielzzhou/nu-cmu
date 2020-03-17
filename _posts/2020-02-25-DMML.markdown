@@ -87,7 +87,7 @@ With an almost 0% misclassification rate and ideal ROC curves, we can ensure tha
 
 Zooming in, we find that the Quadratic Discriminant Analysis achieved a relatively high Top 1000 score despite its mediocre performance on other metrics. Figure 2 shows the predicted posterior probability distribution of the QDA model. The distribution signifies the fact that without an assumption of the class distributions, QDA is able to capture the tail probability relatively well, i.e. allocates higher posterior probabilities on edges and results in the high Top 1000 Sucess rate.
 
-![distribution of posterior probabilities by QDA model]({{"/assets/article1/qda.png" | absolute_url}}){ width=50% }
+![distribution of posterior probabilities by QDA model]({{"/assets/article1/qda.png" | absolute_url}})
 
 <img src={{"/assets/article1/qda.png" | absolute_url}} alt="distribution of posterior probabilities by Random Forest model" style="width:50%;align:center"/>
 
@@ -96,7 +96,7 @@ Zooming in, we find that the Quadratic Discriminant Analysis achieved a relative
 #### 2. WFA results
 We re-examine the ROC curve, misclassification rate, and top 1000 score after applying WFA on random forest. The improvement is not significantly different from not applying WFA, but the results showed clearer patterns for further analysis. 
 
-![distribution of posterior probabilities by Random Forest model]({{"/assets/article1/rf.png" | absolute_url}}){ width=50% }
+![distribution of posterior probabilities by Random Forest model]({{"/assets/article1/rf.png" | absolute_url}})
 
 <img src={"/assets/article1/rf.png" | absolute_url} alt="distribution of posterior probabilities by Random Forest model" style="width:50%;align:center"/>
 
