@@ -144,11 +144,16 @@ LongOnlyStrategySharpeRatio <-c('1.0283','0.3528','0.4167','0.9918')
 table2 <- data.frame(Model, LongShortStrategySharpeRatio, LongOnlyStrategySharpeRatio)
 kable(table2)
 ```
+| Model                           | LongShortStrategySharpeRatio | LongOnlyStrategySharpeRatio |
+|---------------------------------|------------------------------|-----------------------------|
+| Quadratic Discriminant Analysis | 0.3954                       | 1.0283                      |
+| Random Forest                   | 0.0684                       | 0.3528                      |
+| XGBoost                         | 0.1263                       | 0.4167                      |
+| Walk Forward Analysis           | 0.0765                       | 0.9918                      |
 
 
-\begin{center}
-Table 2. Sharpe Ratios of backtesting strategies
-\end{center}
+*Table 2. Sharpe Ratios of backtesting strategies*
+
 
 ## Conclusion
 We research on the predictability of price-based variables, especially momentum factors and market conditions, in the machine learning framework. With the findings that most of the candidate models do not generalize well through data validation and backtesting, we conclude that momentum and market condition factors by themselves are not sufficient to generate reliable predictions on relative stock returns.                              
