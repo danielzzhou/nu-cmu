@@ -59,12 +59,15 @@ Regarding member type, riders on average use the service longer than registered 
 In different seasons, the bike share count varies a lot on different weekdays. This is the area that requires deeper analysis.
 
 
-#### Feature Selection
+### Feature Selection
 
-            <p><strong>1) Stepwise Subset Selection</strong></p>
-            <p>Stepwise subset selection (forward, backward and exhaustive methods) proposes an efficient approach to select best subsets of the independent variables in the model. Forward selection starts from an empty set of features and adds features to the model through cross validation. Backward selection works all the the way around by starting from a full set; the exhaustive one incorporates the two approaches before. </p>
-            <p>I used two algorithms - automatic selection and all possible regression selection - to perform the stepwise selections. </p>
-            <p>First, I conducted the automatic selection where the R function step() performs the selection on this own and gives out the best subset of features. Forward selection gives out a model with 10 predictors, while backward and exhaustive suggest one with 7. I calculated the MSE for the two models and found that the one with 10 predictor variables has a lower error.</p>
+#### Stepwise Subset Selection
+Stepwise subset selection (forward, backward and exhaustive methods) proposes an efficient approach to select best subsets of the independent variables in the model. Forward selection starts from an empty set of features and adds features to the model through cross validation. Backward selection works all the the way around by starting from a full set; the exhaustive one incorporates the two approaches before.
+
+I used two algorithms - automatic selection and all possible regression selection - to perform the stepwise selections. 
+
+First, I conducted the automatic selection where the R function step() performs the selection on this own and gives out the best subset of features. Forward selection gives out a model with 10 predictors, while backward and exhaustive suggest one with 7. I calculated the MSE for the two models and found that the one with 10 predictor variables has a lower error.
+
             <a href="#">
               <img class="img-fluid" src="img/stepwise.png" alt="">
             </a>
