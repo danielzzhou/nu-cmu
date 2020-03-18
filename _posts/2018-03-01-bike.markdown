@@ -13,6 +13,7 @@ Full R Markdown can be found [here](https://danielzzhou.github.io/bikeshare/).
 ## Introduction
 
 With the increasing popularity of bikeshare systems that change citizens’ lifestyles, the understanding of bikeshare systems is a key for city planners and tech startups. The bikeshare system’s social importance lies in a new perspective on monitoring traffic, environmental and health issues, that turns bike sharing system into a virtual sensor network that can be used for sensing mobility in a city. Many private companies in the industry are working on this problem and some also publish their bike use summary datasets for public analysis.
+
 The key question for our project is <strong>determining the dominant drivers for daily bikeshare counts</strong>. The input for our algorithm is a list of time, weather and  user information that might potentially drives aggregated consumer bike uses. I then use a number of machine learning algorithms (stepwise subset feature selection, shrinkage and regularization method, linear and non-linear regression) to construct a few candidate models. Then I compare their performances and select a “best” one that gives a relatively wholistic idea about the key drivers for the daily counts.
 
 
@@ -31,12 +32,14 @@ Some examples of our variables are listed in table 1. </p>
 <p align="center"><em>Table 1. Sample variables in the datasets</em></p>
 
 
-            <h3 class="section-heading">3. Methods and Results</h3>
+## Methods and Results</h3>
+
+<img src="/nu-cmu/assets/article4/procedure.png" alt="procedure" style="width:50%"/>
+
+<p align="center"><em>Figure 1. brief illustration of the methods and procedure</em></p>
+
             <br>
-              <img class="img-fluid" src="img/procedure.png" alt="">
-              <span class="caption text-muted"> Figure 1. brief illustration of the methods and procedure</span>
-            <br>
-            <h3 class="section-heading1">3.1. Data Processing</h3>
+<h3 class="section-heading1">3.1. Data Processing</h3>
             <div style="font-size: 18px">
             <p>I looked at the distribution of each features and log transformed skewed variables. More specifically, I want to stabilize the variance and meet the assumptions of a statistical test or procedure, such as t-test, ANOVA, regression, etc. </p>
             <p>I also checked the correction between the explanatory variables, and removed highly correlated ones (temperature and dew point) to avoid multicollinearity. We created a subset of variables that pass through the multicollinearity check.</p>
