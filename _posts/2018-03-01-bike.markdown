@@ -52,7 +52,7 @@ I also checked the correction between the explanatory variables, and removed hig
 
 Regarding member type, riders on average use the service longer than registered members. Bike share ride duration peaks during summer for both kinds users; in general, there were more rides in spring and summer.
 
-<img src="/nu-cmu/assets/article4/weekday.png" alt="weekday" style="width:90%"/>
+<img src="/nu-cmu/assets/article4/weekday.png" alt="weekday"/>
 
 <p align="center"><em>Figure 3. EDA graph from weekday analysis</em></p>
 
@@ -68,7 +68,7 @@ I used two algorithms - automatic selection and all possible regression selectio
 
 First, I conducted the automatic selection where the R function step() performs the selection on this own and gives out the best subset of features. Forward selection gives out a model with 10 predictors, while backward and exhaustive suggest one with 7. I calculated the MSE for the two models and found that the one with 10 predictor variables has a lower error.
 
-<img src="/nu-cmu/assets/article4/stepwise.png" alt="stepwise" style="width:80%"/>
+<img src="/nu-cmu/assets/article4/stepwise.png" alt="stepwise" style="width:70%"/>
 
 <p align="center"><em>Figure 4. The performance of models with different numbers of variables from forward subset selection</em></p>
 
@@ -79,13 +79,13 @@ As a result, through stepwise subset selection, the optimal subset of features c
 #### Shrinkage Method
 
 L1 Regularization (Lasso) is a shrinkage method that regularizes the coefficient by shrinking them toward 0. It has the potential to improve the fit because reducing the estimates help reducing the variance and solves the overfitting problem. The algorithm is designed to minimize the expression (with a shrinkage penalty term) below:
-<img src="/nu-cmu/assets/article4/fromula.png" alt="formula" style="width:50%"/>
+<img src="/nu-cmu/assets/article4/formula.png" alt="formula" style="width:70%"/>
 
 This method can be used for feature selection because shrinking some coefficients to 0 is essentially eliminating the variables in the model. 
 
 I passed the full model (with 23 potential variables) to L1 Regularization and used cross validation to choose the best shrinking parameter λ = 38.44728. By passing the best λ into the expression, the L1 regularization methods suggests a model with 12 variables. (See Figure.5) 
 
-<img src="/nu-cmu/assets/article4/stepwise.png" alt="stepwise" style="width:70%"/>
+<img src="/nu-cmu/assets/article4/L1.png" alt="L1" style="width:70%"/>
 
 <p align="center"><em>Figure 5 . Cross-validation for optimal lambda for Lasso</em></p>
 
@@ -134,7 +134,7 @@ Based on the MSE on validation set, I observe that the model with the lowest err
 
 ## Conclusion
 Through feature and model selection algorithms, I identified the general additive model that explain the effects of with influential features. Scrutinizing at the features and the smoothed patterns, I observe that:</p>
-<img src="/nu-cmu/assets/article4/conclu.png" alt="conclu" style="width:90%"/>
+<img src="/nu-cmu/assets/article4/conclu.png" alt="conclu"/>
 
 <p align="center"><em>Figure 7. graphical illustration of the effects of different variables in the GAM model with partial splines</em></p>
 
@@ -160,4 +160,3 @@ In addition, I could add in more potentially influential variables (features) fo
 Note: Instead of only passing in the log-transformed variables to the generalized additive model, I could have asked the smoothing model to take care of the skewed predictors. In future study, I would like to see if doing so would improve model performance on testing data.
 
             <p> <em>Special Thanks to - Ziyi Lu</em></p>
-
