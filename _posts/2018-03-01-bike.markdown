@@ -17,10 +17,13 @@ The key question for our project is <strong>determining the dominant drivers for
 
 
 ## Data and Features
- <p>I used Capital Bikeshare Customer Use data from Capital Bikeshare. Capital Bikeshare is a bicycle sharing company that mainly serves in the Washington, D.C. area in the United States. Users can choose to use the service on a one-time basis, or they could register for an 12-month or 30-day membership and receive a key that allows them to unlock any Capital Bikeshare bike at any Capital Bikeshare station. The system data provided by <a href="https://www.capitalbikeshare.com/system-data" target="new">Capital Bikeshare </a>includes trip history data, an exhaustive collection of bikeshare trip summary dating to 2010.</p>
-            <p>I explored the Capital Bikeshare User Data from January 2016 to December 2017, mainly focusing on trip history summary user information with variables include year, month, weekday, and member type (registered member or casual user). I also created a daily rides count variable from the original dataset by counting total number of entries by different type of users per day. </p>
-            <p>To facilitate the analysis about user trends, I also obtained weather data in the Washington, D.C. area from <a href="https://www.wunderground.com/" target="new">Weather Underground</a> to match our bikeshare trip data by date. I hope to explore the influence of weather variables on bikeshare rides counts, such as temperature, precipitation, and wind speed.</p>
-            <p>Some examples of our variables are listed in table 1. </p>
+I used Capital Bikeshare Customer Use data from Capital Bikeshare. Capital Bikeshare is a bicycle sharing company that mainly serves in the Washington, D.C. area in the United States. Users can choose to use the service on a one-time basis, or they could register for an 12-month or 30-day membership and receive a key that allows them to unlock any Capital Bikeshare bike at any Capital Bikeshare station. The system data provided by <a href="https://www.capitalbikeshare.com/system-data" target="new">Capital Bikeshare </a>includes trip history data, an exhaustive collection of bikeshare trip summary dating to 2010.
+
+I explored the Capital Bikeshare User Data from January 2016 to December 2017, mainly focusing on trip history summary user information with variables include year, month, weekday, and member type (registered member or casual user). I also created a daily rides count variable from the original dataset by counting total number of entries by different type of users per day. 
+
+To facilitate the analysis about user trends, I also obtained weather data in the Washington, D.C. area from <a href="https://www.wunderground.com/" target="new">Weather Underground</a> to match our bikeshare trip data by date. I hope to explore the influence of weather variables on bikeshare rides counts, such as temperature, precipitation, and wind speed.
+
+Some examples of our variables are listed in table 1. </p>
           </div>
 
               <img class="img-fluid" src="img/variable.png" alt="">
