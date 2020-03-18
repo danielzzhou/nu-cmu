@@ -1,0 +1,9 @@
+---
+published: true
+layout: post
+title: An Effort to Predict Midterm Election Voting Ballot
+date: '2018-11-01 21:03:36 +0530'
+categories: DataScience PredictiveAnalytics
+---
+
+content to be updated
