@@ -1,0 +1,81 @@
+---
+published: true
+layout: post
+title: 'Are Gun Laws a Remedy for the Suicidal Epidemic? '
+date: '2019-03-03 21:03:36 +0530'
+categories: EDA GunViolence
+---
+A Look into the Relationship between Firearm Suicides and Gun Laws in the United States
+
+*<a href="https://danielzzhou.github.io/FirearmSuicideDataJournalism/EDA.html" target="new">Click for the full original Exploratory Data Analysis</a>*
+       
+Last year, we witnessed two devastating realities in the United States: 47,173 Americans had killed themselves; the firearm death rate hit a 20-year high after 39,773 people died from guns. Behind the two tragic numbers, we may realize that firearm suicide, the grey area that often lacks press attention, accounts for a substantial proportion of the violence epidemic.
+
+
+While firearms are used in less than 10 percent of suicidal attempts, almost half of the suicides attribute to them in 2017, according to the Center for Disease Control and Prevention. However astounding, the total suicides with guns has been historically higher than homicides, accounting for about two thirds of total firearm deaths.
+
+![overall.png]({{"/assets/article3/overall.png" | absolute_url}})
+
+            
+In comparison to the volatile nature of the historical trends in firearm homicides, we observe a steady rate of increase in firearm suicides. Deaths from mass shooting is almost negligible. 
+
+<p><b>The Geographical Differences across States</b></p>
+
+Within the spiking trend, different states don’t experience the symptoms of this epidemic equally. 
+
+![2017suicide.png]({{"/assets/article3/2017suicide.png" | absolute_url}})
+
+
+
+<p>Texas and California lead the firearm suicide counts in 2017 with 2,158 and 1,610 respectively. However, if we compare the population-adjusted crude rate, the density map will tell a different story - Montana and West Virginia are leading the rates after the adjustments. While variations occurred in 2010 and 2000, we also see that Montana, Wyoming and West Virginia had high crude rates among the states.</p>
+
+<p><b>How do gun laws fit in?</b></p>
+
+<p>People across the states have been rallied together behind gun laws to address the gun violence epidemic. However, though hundreds of policy makers and researchers have studied on the effects of specific gun laws, it might still be hasty to conclude if certain legislations have reductive or prohibitive impact on gun violence controls, not to mention firearm suicides with fewer public records.</p>
+<p>Despite the difficulties in causal analysis, people interested in policy impacts can still infer certain relationships between gun laws and suicide rates among states. Surprisingly, there is an observable inverse relationship between the total number of gun laws and the crude suicide rates.</p>
+
+![2017totallawvssuicide.png]({{"/assets/article3/2017totallawvssuicide.png" | absolute_url}})
+
+
+<p>The gun legislations vary significantly among states: California and Massachusetts are leading with 106 pieces of laws in 2017 in categories like deal and buyer regulations, and prohibitions for high-risk gun possession (Massachusetts had been the most strict since at least 1991 and California has been making additions and modifications in recent years); Wyoming, Alaska and Montana are aggregated on the other side of the scale with gun laws as few as five.</p> 
+
+<p>On the list of all possible 130 pieces of gun laws, however, much effort was put into gun legislations in categories like “ammunition regulations”, “concealed carry permitting” and “assault weapons and large-capacity magazines,” which seem to have more effects on firearm homicide prevention. According to Cassandra Crifasi, assistant professor of public health at Johns Hopkins University, while suicide prevention requires a holistic approach, some evidence-based gun policies, such as permit-to-purchase laws and waiting period impositions, are more associated with reductions in firearms suicide.</p>
+
+![hrpvssuicide.png]({{"/assets/article3/hrpvssuicide.png" | absolute_url}})
+
+
+<p>One category of gun legislation that might foster a reduction effect is the prohibition for high risk possessions. This is a broad category that includes prohibition of gun ownership among people with mental health danger, alcoholism, etc. The linear relationship between high risk prohibition gun laws and suicide rates has lost some significance but it is still roughly observable.</p> 
+           
+
+<div class='tableauPlaceholder' id='viz1552540733732' style='width: device-width; height: 500px;'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;me&#47;mentalhealth_15525407261560&#47;mentalhealth&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='mentalhealth_15525407261560&#47;mentalhealth' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;me&#47;mentalhealth_15525407261560&#47;mentalhealth&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div> <script type='text/javascript'>                    var divElement = document.getElementById('viz1552540733732');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1000px';vizElement.style.height='577px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);</script>
+
+
+<p>In 2017, 21 states have implemented the legislation that prohibits firearm possessions of people with potential mental health danger. From 2000 to 2017, the crude suicidal rates of states with prohibition law on mental health danger and those without the legislation gradually diverge: the crude suicidal rates on the lower ends all belong to states with such law enforcement; the states with high rates, namely Wyoming, Montana and Alaska, do not have such law imposed (with West Virginia as an exception.) <p>
+
+<p>The high-risk prohibition laws on drug misdemeanors and alcoholism are among the viable choices for many states. The law on the prohibition of people with drug demeanor shows a conspicuous relationship with crude suicide rate where most states with drug misdemeanor laws aggregate on the left (low suicidal rate) and others aggregate on the right. However, the states that implement gun possession prohibition laws regarding alcoholism spread out equally on the scale.</p> 
+
+
+<div class='tableauPlaceholder' id='viz1552542484361' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;dr&#47;drugmisdemeanor&#47;drugmisdemeanor&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='drugmisdemeanor&#47;drugmisdemeanor' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;dr&#47;drugmisdemeanor&#47;drugmisdemeanor&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1552542484361');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='800px';vizElement.style.height='577px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+             
+             <div class='tableauPlaceholder' id='viz1552540882598' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;al&#47;alcoholism&#47;Dashboard3&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='alcoholism&#47;Dashboard3' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;al&#47;alcoholism&#47;Dashboard3&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1552540882598');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1000px';vizElement.style.height='587px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+
+
+<p>In addition, waiting periods have been found to be associated with lower rates of firearm suicide. These laws require an individual to wait a certain number of days after purchasing a handgun before the purchaser can take possession of the gun. Waiting periods can delay the impulsive purchase of a handgun, which could reduce the likelihood that gun would be used in a suicide attempt if the moment of crisis passes prior to the purchaser taking possession of the gun.</p>
+ 
+             <div class='tableauPlaceholder' id='viz1552542319602' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;wa&#47;waiting&#47;Dashboard4&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='waiting&#47;Dashboard4' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;wa&#47;waiting&#47;Dashboard4&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1552542319602');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='800px';vizElement.style.height='577px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+
+
+<p>So are gun laws a remedy for the American epidemic? </p>
+<p>Historical data do prove some associations between the law enforcement and firearm suicide rates, but the effectiveness of gun violence laws remain in a controversial state among policy makers. John Lott, president of the Crime Prevention Research Center, who advocates for gun rights, argues that “these laws wrongfully assume guns actually contribute to suicide.” Lott believes that in the absence of guns, people will find alternative means and “carry them through to completion.” Lott also argues that such prohibitions do not decrease suicide rates but leave people unarmed against intrusions.</p> 
+
+<p>Regarding Lott’s view, Crifasi says that the restriction of lethal methods “during a time of crisis can prevent suicide.” One is more likely to survive his or her suicidal attempts if a substitute is used. “Firearms are the most lethal means available,” Crifasi argues, “And the vast majority of individuals who survive a suicide attempt do not go on to die from suicide in the future.”</p>
+            <br>
+
+<hr>
+
+<p><strong>About the story</strong><p>
+<p><em>The data used in this story is compiled from the <a href="https://wonder.cdc.gov/" target="new">Center for Disease Control and Prevention</a>, <a href="https://www.statefirearmlaws.org/national-data" target="new">State Firearm Laws National Database</a>, <a href="https://www.motherjones.com/politics/2012/07/mass-shootings-map/" target="new">Mother Jones Gun Research</a> and <a href="https://www.gunviolencearchive.org/" target="new">Gun Violence Archive</a>.</em></p>
+            <p><em>For the original exploratory data analysis, please click <a href="EDA.html">here</a>.</em></p>
