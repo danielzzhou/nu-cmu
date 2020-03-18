@@ -24,11 +24,11 @@ I explored the Capital Bikeshare User Data from January 2016 to December 2017, m
 To facilitate the analysis about user trends, I also obtained weather data in the Washington, D.C. area from <a href="https://www.wunderground.com/" target="new">Weather Underground</a> to match our bikeshare trip data by date. I hope to explore the influence of weather variables on bikeshare rides counts, such as temperature, precipitation, and wind speed.
 
 Some examples of our variables are listed in table 1. </p>
-          </div>
 
-              <img class="img-fluid" src="img/variable.png" alt="">
-      
-            <span class="caption text-muted">Table 1. Sample variables in the datasets</span>
+
+<img src="/nu-cmu/assets/article4/variable.png" alt="variables" style="width:50%"/>
+
+<p align="center"><em>Table 1. Sample variables in the datasets</em></p>
 
 
             <h3 class="section-heading">3. Methods and Results</h3>
