@@ -68,76 +68,96 @@ I used two algorithms - automatic selection and all possible regression selectio
 
 First, I conducted the automatic selection where the R function step() performs the selection on this own and gives out the best subset of features. Forward selection gives out a model with 10 predictors, while backward and exhaustive suggest one with 7. I calculated the MSE for the two models and found that the one with 10 predictor variables has a lower error.
 
-            <a href="#">
-              <img class="img-fluid" src="img/stepwise.png" alt="">
-            </a>
-             <span class="caption text-muted">Figure 4. The performance of models with different numbers of variables from forward subset selection</span>
-            <p>Then, for all possible regression selection, I compared the models with different numbers of predictors according criteria such as AiC and adjusted R^2. According to Fig.1, the forward selection proposes that the best model constitutes 10 variables. The backward and exhaustive selection methods produce the same result with similar plots.</p>
-            <p>As a result, through stepwise subset selection, the optimal subset of features contains 10 variables, which included member type, month,weekday, average temperature, average humidity, etc.</p>
+<img src="/nu-cmu/assets/article4/stepwise.png" alt="stepwise" style="width:50%"/>
 
-            <p><strong>2) Shrinkage Method</strong></p>
-            <p>L1 Regularization (Lasso) is a shrinkage method that regularizes the coefficient by shrinking them toward 0. It has the potential to improve the fit because reducing the estimates help reducing the variance and solves the overfitting problem. The algorithm is designed to minimize the expression (with a shrinkage penalty term) below: </p>
-            <img class="img-fluid" src="img/formula.png" alt="">
-            <p>This method can be used for feature selection because shrinking some coefficients to 0 is essentially eliminating the variables in the model. </p>
-            <p>I passed the full model (with 23 potential variables) to L1 Regularization and used cross validation to choose the best shrinking parameter λ = 38.44728. By passing the best λ into the expression, the L1 regularization methods suggests a model with 12 variables. (See Figure.5) </p>
-            <a href="#">
-              <img class="img-fluid" src="img/L1.png" alt="">
-            </a>
-            <span class="caption text-muted"> Fig.5 . Cross-validation for optimal λ for Lasso 
-</span>
-          <hr>
-          <br>
-        </div>
+<p align="center"><em>Figure 4. The performance of models with different numbers of variables from forward subset selection</em></p>
 
-           <h3 class="section-heading1">3.3 Regression</h3>
-           <div style="font-size: 18px">
-            <p><strong>1) Linear Model</strong></p>
-            <p>I passed in the variables selected by feature selection methods to a standard multiple linear regression to achieve the best coefficient estimates for regression. From the regression summary, we can see that member type and average temperature has the lowest p-value, so they are the most important features in the model. More specifically, keeping everything else equal, the rides count is 4992 units higher registered member users on average per day than casual users; the rides count increases 88.5 units when average temperature is one unit higher in degrees Fahrenheit. </p>
-            <p>The adjusted R^2 value is 0.7767 for this standard multiple linear regression: about 77.67% of the total variation in the bikeshare rides count can be explained by this model.</p>
+Then, for all possible regression selection, I compared the models with different numbers of predictors according criteria such as AiC and adjusted R^2. According to Fig.1, the forward selection proposes that the best model constitutes 10 variables. The backward and exhaustive selection methods produce the same result with similar plots.
 
-            <p><strong>2) Lasso Model</strong></p>            
-            <p>I fitted a lasso model on all of the variables of interest. The optimal value of λ (38.44728) for L1-regularization was tuned using 10-fold cross-validation over a grid of log values (Figure 2). Lasso regression gave an output of 11 different features with nonzero coefficient estimates. The features chosen by the Lasso are different to the ones produced by feature selection process: both average temperature and the lowest temperature, and both high wind speed and average wind speed are selected. However, the residuals are not randomly scattered.</p>
+As a result, through stepwise subset selection, the optimal subset of features contains 10 variables, which included member type, month,weekday, average temperature, average humidity, etc.
 
-             <p><strong>3) Generalized additive model - all smoothing splines</strong></p>
-            <p> I fitted a generalized additive model with smoothing spline for all of the variables selected by feature selection above. For degrees of freedom selection, I used cross-validated mean squared errors. 
-            <p>From the Anova for Parametric Effects in the summary, month, member type, average temperature, and average humidity have the lowest p-values. The p-values are generally smaller than that from the standard multiple linear regression. We can also see that in the Anova for Nonparametric Effects, average sea level press, average wind speed, and low visibility are not statistically significant at significance level of 0.1, there is no strong evidence of non-linear relationship between these predictors and bikeshare count. We would want to create a mixed model with these factors in linear terms.</p>
+#### Shrinkage Method
 
-             <p><strong>4) Generalized additive model - partial smoothing splines</strong></p>
-            <p> I fitted a mixed generalized additive model with the average sea level press, average wind speed, and low visibility in linear terms and all the rest selected variables in smoothing spline. The degrees of freedom are the same as in all smoothing splines generalized additive model.</p>
-            <p>The AIC criteria improves for the partial smoothing model to 20378.31.The residual plot and the QQ-plot are similar to those for all smoothing splines generalized additive model. The residuals are not randomly scattered in the residual plot, and the homoscedasticity assumption is not met: there exists a non-linear pattern. </p>
+L1 Regularization (Lasso) is a shrinkage method that regularizes the coefficient by shrinking them toward 0. It has the potential to improve the fit because reducing the estimates help reducing the variance and solves the overfitting problem. The algorithm is designed to minimize the expression (with a shrinkage penalty term) below:
+<img src="/nu-cmu/assets/article4/froumula.png" alt="formula" style="width:50%"/>
+
+This method can be used for feature selection because shrinking some coefficients to 0 is essentially eliminating the variables in the model. 
+
+I passed the full model (with 23 potential variables) to L1 Regularization and used cross validation to choose the best shrinking parameter λ = 38.44728. By passing the best λ into the expression, the L1 regularization methods suggests a model with 12 variables. (See Figure.5) 
+
+<img src="/nu-cmu/assets/article4/stepwise.png" alt="stepwise" style="width:70%"/>
+
+<p align="center"><em>Figure 5 . Cross-validation for optimal lambda for Lasso</em></p>
+
+
+####  Regression
+
+1) Linear Model
+
+I passed in the variables selected by feature selection methods to a standard multiple linear regression to achieve the best coefficient estimates for regression. From the regression summary, we can see that member type and average temperature has the lowest p-value, so they are the most important features in the model. More specifically, keeping everything else equal, the rides count is 4992 units higher registered member users on average per day than casual users; the rides count increases 88.5 units when average temperature is one unit higher in degrees Fahrenheit.
+
+The adjusted R^2 value is 0.7767 for this standard multiple linear regression: about 77.67% of the total variation in the bikeshare rides count can be explained by this model.
+
+2) Lasso Model
+
+I fitted a lasso model on all of the variables of interest. The optimal value of λ (38.44728) for L1-regularization was tuned using 10-fold cross-validation over a grid of log values (Figure 2). Lasso regression gave an output of 11 different features with nonzero coefficient estimates. The features chosen by the Lasso are different to the ones produced by feature selection process: both average temperature and the lowest temperature, and both high wind speed and average wind speed are selected. However, the residuals are not randomly scattered.
+
+3) Generalized additive model - all smoothing splines
+I fitted a generalized additive model with smoothing spline for all of the variables selected by feature selection above. For degrees of freedom selection, I used cross-validated mean squared errors. 
+
+From the Anova for Parametric Effects in the summary, month, member type, average temperature, and average humidity have the lowest p-values. The p-values are generally smaller than that from the standard multiple linear regression. We can also see that in the Anova for Nonparametric Effects, average sea level press, average wind speed, and low visibility are not statistically significant at significance level of 0.1, there is no strong evidence of non-linear relationship between these predictors and bikeshare count. We would want to create a mixed model with these factors in linear terms.
+
+4) Generalized additive model - partial smoothing splines
+
+I fitted a mixed generalized additive model with the average sea level press, average wind speed, and low visibility in linear terms and all the rest selected variables in smoothing spline. The degrees of freedom are the same as in all smoothing splines generalized additive model.</p>
+
+The AIC criteria improves for the partial smoothing model to 20378.31.The residual plot and the QQ-plot are similar to those for all smoothing splines generalized additive model. The residuals are not randomly scattered in the residual plot, and the homoscedasticity assumption is not met: there exists a non-linear pattern.
+
+<img src="/nu-cmu/assets/article4/diag.png" alt="diag" style="width:70%"/>
+
+<p align="center"><em>Figure 6. Diagnostics of the GAM model</em></p>
+
+
+## Model Selection and Validation Result
+
+I used the <strong>validation set cross validation</strong> method to further compare the performances of the models and select from the four candidates. The “best” model ideally has the lowest test error associated with fitting the model on the observations among the four. The validation set method divides the available dataset randomly into two parts - <strong>80% of the data was used as training set and the rest 20% as test, or validation, set.</strong> (To note, I divided the sets in the very beginning and only used the training set for all the steps before.) 
+
+The model was tested on the validation set through making predictions, and then the mean squared error is calculated and listed in Table 2 (the original full linear model if I use all possible variables are included as a reference).
+
+<img src="/nu-cmu/assets/article4/result.png" alt="result" style="width:70%"/>
+
+<p align="center"><em>Table 2. Test Errors for the Candidate Model</em></p>
+
+
+
+Based on the MSE on validation set, I observe that the model with the lowest error is the General Additive Model with partial smoothing splines for continuous variables.
+
+## Conclusion
+Through feature and model selection algorithms, I identified the general additive model that explain the effects of with influential features. Scrutinizing at the features and the smoothed patterns, I observe that:</p>
+<img src="/nu-cmu/assets/article4/conclu.png" alt="conclu" style="width:70%"/>
+
+<p align="center"><em>Figure 7. graphical illustration of the effects of different variables in the GAM model with partial splines</em></p>
+
+1) <strong>year:</strong> there is a significant increase in bikeshare ride counts from 2016 to 2017;
+2) <strong>month:</strong> within a year, the count increases from January to July and slowly gets lower when going into winter months; 
+3) <strong>weekday:</strong> within a week, the count is the lowest on mondays, and stays almost the same throughout other weekdays; 
+4) <strong>member type:</strong> registered members contribute the majority of bikeshare use, significantly more than casual users;
+5) <strong>average temperature:</strong> bikeshare ride count increases as the average temperature increases, but starts to decline as the temperature goes too high;
+6) <strong>average humidity:</strong> the count tends to decrease as average humidity increases;
+7) <strong>average sea level pressure:</strong> count and average sea level pressure has a positive linear relationship, but has a lot variation at the lower-end and upper-end of the distribution; 
+8) <strong>average wind speed:</strong> count and average wind speed has a negative linear relationship, but the variation is large at the lower-end and upper-end of the distribution; 
+9) <strong>lowest visibility:</strong> count and lowest visibility has a negative linear relationship, but the variation is large at the lower-end of the distribution;
+10) <strong>precipitation:</strong> bikeshare rides count stays flat as precipitation increases, and starts to decrease steeply as the rain gets too heavy.
+
+This allows me to more accurately capture how the influential factors determine the total daily bikeshare counts. Furthermore, I can potentially extend the application of this project to a possible cyclical marketing campaign that targets on the possible low-count (unpopular) days to potentially drive more profits.
+
+For the next step, I have proposed three routes that we can continue work on:
+
+First, I can potentially expand our dataset more from retrieving all the observations from 2011 to 2017. By doing so, we could 1) confirm if there was an increasing trend in year variable so that the bikeshare system is getting more popular in this past year, 2) conduct time-series analysis on the comprehensive panel data.
+
+In addition, I could add in more potentially influential variables (features) for selection. Currently I only focus in the bike metadata and weather variables. For example, we could explore the potential for a categorical variable called “popular station” indicating whether the bike starts or ends at the popular stations (eg, Columbus Circle / Union Station, Lincoln Memorial) in Washington DC.
             
-              <img class="img-fluid" src="img/diag.png" alt="">
-          
-            <span class="caption text-muted"> Figure 6. Diagnostics of the GAM model </span>
-</div>
-            <div style="font-size: 18px">
-           <h3 class="section-heading">4. Model Selection and Validation Result</h3>
-           <p>I used the <strong>validation set cross validation</strong> method to further compare the performances of the models and select from the four candidates. The “best” model ideally has the lowest test error associated with fitting the model on the observations among the four. The validation set method divides the available dataset randomly into two parts - <strong>80% of the data was used as training set and the rest 20% as test, or validation, set.</strong> (To note, I divided the sets in the very beginning and only used the training set for all the steps before.) </p>
-          <p>The model was tested on the validation set through making predictions, and then the mean squared error is calculated and listed in Table 2 (the original full linear model if I use all possible variables are included as a reference).</p>
-              <img class="img-fluid" src="img/result.png" alt="">
-            <span class="caption text-muted"> Table 2. Test Errors for the Candidate Model </span>
-            <p> Based on the MSE on validation set, I observe that the model with the lowest error is the General Additive Model with partial smoothing splines for continuous variables.</p>
-            <h3 class="section-heading">6. Conclusion</h3>
-            <p>Through feature and model selection algorithms, I identified the general additive model that explain the effects of with influential features. Scrutinizing at the features and the smoothed patterns, I observe that:</p>
-            <img class="img-fluid" src="img/conclu.png" alt="">
-            <span class="caption text-muted">Figure 7. graphical illustration of the effects of different variables in the GAM model with partial splines</span>
-            <p> 1) <strong>year:</strong> there is a significant increase in bikeshare ride counts from 2016 to 2017;</p>
-            <p>2) <strong>month:</strong> within a year, the count increases from January to July and slowly gets lower when going into winter months; </p>
-            <p>3) <strong>weekday:</strong> within a week, the count is the lowest on mondays, and stays almost the same throughout other weekdays; </p>
-            <p>4) <strong>member type:</strong> registered members contribute the majority of bikeshare use, significantly more than casual users; </p>
-            <p>5) <strong>average temperature:</strong> bikeshare ride count increases as the average temperature increases, but starts to decline as the temperature goes too high;</p> 
-            <p>6) <strong>average humidity:</strong> the count tends to decrease as average humidity increases;</p>
-            <p> 7) <strong>average sea level pressure:</strong> count and average sea level pressure has a positive linear relationship, but has a lot variation at the lower-end and upper-end of the distribution; </p>
-            <p>8) <strong>average wind speed:</strong> count and average wind speed has a negative linear relationship, but the variation is large at the lower-end and upper-end of the distribution; </p>
-            <p>9) <strong>lowest visibility:</strong> count and lowest visibility has a negative linear relationship, but the variation is large at the lower-end of the distribution;</p> 
-            <p>10) <strong>precipitation:</strong> bikeshare rides count stays flat as precipitation increases, and starts to decrease steeply as the rain gets too heavy.</p>
-            <p>This allows me to more accurately capture how the influential factors determine the total daily bikeshare counts. Furthermore, I can potentially extend the application of this project to a possible cyclical marketing campaign that targets on the possible low-count (unpopular) days to potentially drive more profits.</p>
-            <br>
-            <p>For the next step, I have proposed three routes that we can continue work on:</p>
-            <p>First, I can potentially expand our dataset more from retrieving all the observations from 2011 to 2017. By doing so, we could 1) confirm if there was an increasing trend in year variable so that the bikeshare system is getting more popular in this past year, 2) conduct time-series analysis on the comprehensive panel data.</p>
-            <p>In addition, I could add in more potentially influential variables (features) for selection. Currently I only focus in the bike metadata and weather variables. For example, we could explore the potential for a categorical variable called “popular station” indicating whether the bike starts or ends at the popular stations (eg, Columbus Circle / Union Station, Lincoln Memorial) in Washington DC.</p>  
-            <p>Also, I could potentially run a classification, a place of a regression model. Instead of using total daily counts, we could identify the popularity of the bikeshare in a specific day. For example, the day is popular if total daily bikeshare rides exceeds 5000 count.</p>
-            <p>I also want to point out the limitations in our analysis. Instead of only passing in the log-transformed variables to the generalized additive model, I could have asked the smoothing model to take care of the skewed predictors. In future study, I would like to see if doing so would improve model performance on testing data.</p>
-          </div>
+Note: Instead of only passing in the log-transformed variables to the generalized additive model, I could have asked the smoothing model to take care of the skewed predictors. In future study, I would like to see if doing so would improve model performance on testing data.
+
             <p> <em>Special Thanks to - Ziyi Lu</em></p>
-        </div>
+
