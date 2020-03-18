@@ -149,6 +149,7 @@ if (document.getElementById('checkbox1').checked)
     hl[i].style.backgroundColor = 'rgba(255,255,255,0.9)';}
 ```
 
+<br>
 * Popup box:
 In addition, we hope to have an add-on functionality with the inclusion of a pop-up box that explains how the part is personalized. We only implemented one pop-box in the first personalized text for showcase purpose but the css code will still work if you have multiple comments that need to be placed in the pop-up box.
 1) Make sure that you put the comments you want to put in the popup box in a `i` tag in Arria. For example, this is how we want to add the 'i' tags:
