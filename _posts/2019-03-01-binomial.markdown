@@ -8,7 +8,7 @@ published: true
 
 This illustrative project involves the entire tree matrix for the intermediate steps to implement the Binomial Options Pricing Model. 
 
-The Binomial Options Pricing Model is a lattice-based approach that uses a discrete-time model of the varying price over time of the underlying financial instrument. First proposed by Cox, Ross, and Rubenstein in 19791. Binomial option pricing is a simple but powerful technique that can be used to solve many complex option-pricing problems. 
+The Binomial Model is a lattice-based approach that uses a discrete-time model of the varying price over time of the underlying financial instrument. First proposed by Cox, Ross, and Rubenstein in 19791. Binomial option pricing is a simple but powerful technique that can be used to solve many complex option-pricing problems. 
 
 ### Binomial Tree Approximation 
 Theoretically, the Black Scholes formula, the continuous-time pricing formula, can be approximated by the step increments of binomial tree models. Binomial trees are a discrete pricing model in which we can derive the option price by 
