@@ -3,7 +3,7 @@ published: true
 layout: post
 title: Cycling Around the City
 date: '2018-03-01 21:03:36 +0530'
-categories: 'Data Science,'
+categories: DataScience Bikeshare
 ---
 
 Bikeshare Regression Model Building and Selection in Washington DC
