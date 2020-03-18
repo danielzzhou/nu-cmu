@@ -3,7 +3,7 @@ published: true
 layout: post
 title: Design Demo for News Personalization
 date: '2019-02-25 21:03:36 +0530'
-categories: MediaInnovation FrontEnd
+categories: MediaInnovation
 ---
 
 The project serves as a proof of concept for news personalization, with design idealization, implementation and ethical considerations.
@@ -166,5 +166,3 @@ var e = document.getElementsByTagName('b');
 for (i=0;i<e.length;i++){
    e[i].setAttribute("class","popup");}
 ```
-
-
