@@ -6,3 +6,165 @@ date: '2019-02-25 21:03:36 +0530'
 categories: MediaInnovation FrontEnd
 ---
 
+While algorithmic news curation aggregators are common on social media,far less is known about the potential for article-level personalization in which an article is automatically re-written to appeal to different types of users, perhaps even adapted to each individual.
+
+So welcome to our project, Personalize the News. We are a team of five Northwestern University students working on news personalization in conjunction with the Northwestern University [Knight Lab Studio](https://knightlab.northwestern.edu/). Our project serves as a proof of concept for news personalization.
+
+
+View the live project [here](https://nuknightlab.github.io/studio-personal-story/)!
+
+
+
+### Technology Used
+- [Arria Studio for Natural Language Generation (NLG)](https://www.arria.com/studio/studio-overview/)
+- [Arria Studio NLG API](https://docs.studio.arria.com/key-concepts/using-the-api/)
+- [D3.js for data and csv parsing](https://d3-wiki.readthedocs.io/zh_CN/master/CSV/)
+
+
+
+## Steps from start to finish
+### Creating Article in Arria
+
+Arria (link above) is an online tool for creating articles that customize using natural language generation. Our first step was to construct a project in Arria that our website would use. Arria has thorough documentation for its various functions and for using its API.
+
+1) Create an Arria account and create a new Arria project. We used a "Describe Each Row" project.
+2) Create sample data to import into Arria. This sample data should mimic the data that will be collected from users and use to personalize the story.  We created a CSV file that had rows for 14 fake users.
+3) Using these profiles, customize your article in Arria. You can modify your article text in the compose tab. Think of ways you can personalize your article. Is there a large story you can contextualize for a specific user? Are there some aspects of the article that are more pertinent to the user than others? Make sure to consult Arria's documentation for help.
+4) Test your article using Arria's preview function and make sure the article is correct gramatically.
+5) Under the publish tab, publish your article and make sure to keep track of the API key and project URL. You will need both to implement the article. If you make any changes to your article, make sure to republish so that those changes will be reflected on your website.
+
+
+### Sending and receiving data to/from Arria
+Here we used D3.js to load and parse a csv file that contained much of the informaton needed to create an article in Arria along with a template for the data we were collecting.
+
+1) Create your js file (e.g. index.js).
+2) Create a form in html to collect the information that you need from the user. Set the id value.
+3) Add these lines to your html file:
+```
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
+  <script src="index.js"></script>
+``` 
+4) Serialize the form:
+ ```
+ formJson = $("#form1").serializeArray();
+ ```
+ This returns a json array of this general shape:
+ ```
+  [{name: "Gender", value: "female"}, 
+  {name: "Urban_Rural", value: "urban"}, 
+  {name: "State", value: "Texas"}]
+ ```
+ The values depend on the information you request.
+ 
+ 5) Call D3.js csv function and use however you need. Here, we used it to grab the row corresponding to the user's given state value (e.g. "Texas").
+ ```
+ d3.csv("data.csv").then(function(data) {
+    // console.log(data); // [{"Hello": "world"}, …]
+    csvJsonData = data;
+
+    data.forEach(function(d) {
+      if (d.State == formJson[2]["value"]) {
+        stateData = d; // {STATE: "TX", sen_1: "John Cornyn", Party_1: "Republican", Phone_1: "202-224-2934", NRA_grade_1: "A+", …}
+      }
+
+    });
+    csvRowToJsonDict(stateData);
+  });
+ ```
+
+6) Next, you need to build up this json dictionary to pass to Arria:
+ ```
+   jsonDict = {
+    "data":[
+      {
+        "id":"Primary",
+        "type":"1d",
+        "dataSet":[keysArr, valsArr],
+        "projectArguments":null,
+        "options":null
+      }
+    ]
+  };
+ ```
+ To do this, simply collect all of the keys (header names) of the csv row you grabbed in step 5 in one array (e.g. keysArr) and the corresponding values in another one (e.g. valsArr). Then replace whichever array values in valsArr you need with the information you collected in the forms. Finally, join those two into one larger array:
+ ```
+ [keysArr, valsArr]
+ ```
+ 
+ Side note: make sure that your csv is prepared to accept your form values. We added extra columns in our csv file with the corresponding headers (state, gender, etc.) and simply replaced the values in each row of those columns with a dummy value. D3 will automatically grab whatever information is in you csv, so doing this means that you simply need to replace the dummy values it grabs with the real information that you collect.
+ 
+ 7) Finally, you can simply call the loadArria(formResutls) function we created in index.js and pass in your jsonDict as formResults!:
+ ```javascript
+ function loadArria(formResults){
+  var ans;
+  var paragraph = document.getElementById("arriaText");
+  var studio_api_key = "yourKey"
+  jQuery.ajax({
+    url: 'yourURL',
+    type: 'POST',
+    dataType: 'json',
+    data: JSON.stringify(formResults),
+     beforeSend : function( xhr ) {
+       xhr.setRequestHeader( 'Authorization', 'bearer ' + studio_api_key);
+       xhr.setRequestHeader( 'Content-Type', 'application/json');
+     },
+     success: function( response ) {
+      parser = new DOMParser();
+      doc = parser.parseFromString(response[0].result, "text/html")
+      paragraph.innerHTML = doc.body.innerHTML;
+     }
+  });
+}
+```
+
+ This will contact Arria and, if the request is successful, will receive your personlaized article back and display it on the page using those last few lines of code.
+
+ 
+### Highlighting personalized text
+Then we moved on to interface design. Based on our low-fidelity user testing results, we decided to implement the current version of style and interaction, which we believe faciliates the personalization reading process. *Note: some of the interactions and designs are not mandatory if you do not wish to include the functionalities such as highlighters, popups, etc.*
+
+* Highlighter： We included a highlighter functionality if readers wish to view which parts are personalized.
+1) Make sure that you put the personalized parts in your article in a `b` tag in Arria. For example,
+```
+The most recent gun-related crime in [[decodeHtml("<b>[[State]] occurred on [[Incident_Date]] in [[Incident_City]]. [[if(Num_Killed>0||Num_Injured>0){[[if(Num_Killed>0){[[Num_Killed]] [[if(Num_Killed>1){people were }else{person was }]]killed}]] [[if(Num_Killed>0&&Num_Injured>0){and}]] [[if(Num_Injured>0){[[Num_Injured]] [[if(Num_Injured>1){people were }else{person was }]]injured}]].}]] </b>")]]
+```
+2) On the story page, we embedded an "ON/OFF" checkbox, which links to the highlighter function explained below.
+```html
+<label class="btn-onoff">
+    <input type="checkbox" id="checkbox1" onclick="highlighter();" name="name" data-onoff="toggle">
+    <span></span>
+</label>
+```
+3) In our highlighter() javascript function, we first define a variable called 'hl', in which we look for all elements in the  `popup` class. Then an `if` statement is added to handle the "on/off" switch: if the checkbox is checked, a "for loop" looks for every single element in `hl` and change its background color of the text into a 60% transparent yellow; otherwise, when unchecked, the background color is changed back to white.
+```javascript
+var hl =  document.getElementsByClassName('popup');
+if (document.getElementById('checkbox1').checked)
+{ 
+  for (i=0;i<hl.length;i++){
+   hl[i].style.backgroundColor = 'rgba(234,210,6,0.6)';
+   }
+}else{
+  for (i=0;i<hl.length;i++){
+    hl[i].style.backgroundColor = 'rgba(255,255,255,0.9)';}
+```
+
+* Popup box:
+In addition, we hope to have an add-on functionality with the inclusion of a pop-up box that explains how the part is personalized. We only implemented one pop-box in the first personalized text for showcase purpose but the css code will still work if you have multiple comments that need to be placed in the pop-up box.
+1) Make sure that you put the comments you want to put in the popup box in a `i` tag in Arria. For example, this is how we want to add the 'i' tags:
+```
+[[decodeHtml("<b>[[State]] occurred on [[Incident_Date]] in [[Incident_City]]. [[if(Num_Killed>0||Num_Injured>0){[[if(Num_Killed>0){[[Num_Killed]] [[if(Num_Killed>1){people were }else{person was }]]killed}]] [[if(Num_Killed>0&&Num_Injured>0){and}]] [[if(Num_Injured>0){[[Num_Injured]] [[if(Num_Injured>1){people were }else{person was }]]injured}]].}]] <i>This part is personalized because you are from Texas and you are provided with the most recent gun-related crime in your state.</i></b>")]]
+```
+2) in  `docs/css/form_page.css`, make sure that you include `visibility:hidden;` in  `.popup i` and `visibility:visible;` in `.popup: hover i`. Many of other style changes in the class are for design and simplicity purpose and not mandatory.
+
+#### Weird things to watch out for
+There are some restrictions in the implementation processes that you need to care for if you want to replicate the page and make some chances.
+* setAttribute()
+The first thing you need to watch out for is that the decodeHtml() functionality in Arria only recognize pure `p`,`b`,`i` tags. If you hope to add classes or IDs to the tags, we used the setAttribute() function, for example,
+```javascript
+var e = document.getElementsByTagName('b');
+for (i=0;i<e.length;i++){
+   e[i].setAttribute("class","popup");}
+```
+
+
