@@ -1,13 +1,13 @@
 ---
 published: true
 layout: post
-title: Dissecting Momentum through Machine Learning?
+title: Dissecting Momentum through Machine Learning
 date: '2020-02-25 21:03:36 +0530'
 categories: MachineLearning MomentumInvesting
 ---
 
- 
- 
+Are solely price-based factors powerful enough for cross-sectional equity return predictions?
+
 *In collaboration with Katherine Liu, Chris Wang and Joe Zhou* 
  
 Price-based cross-sectional predictability of equity returns has become a fad in the financial industry in recent years. With the advent of machine learning asset pricing techniques, solely price-based predictive models, without the need for complementary fundamental or alternative data sources, seem extremely lucrative in the investment framework if proved robust. Will it really work?
