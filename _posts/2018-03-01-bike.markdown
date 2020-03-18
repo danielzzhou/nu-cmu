@@ -14,7 +14,7 @@ Full R Markdown can be found [here](https://danielzzhou.github.io/bikeshare/).
 
 With the increasing popularity of bikeshare systems that change citizens’ lifestyles, the understanding of bikeshare systems is a key for city planners and tech startups. The bikeshare system’s social importance lies in a new perspective on monitoring traffic, environmental and health issues, that turns bike sharing system into a virtual sensor network that can be used for sensing mobility in a city. Many private companies in the industry are working on this problem and some also publish their bike use summary datasets for public analysis.
 
-The key question for our project is <strong>determining the dominant drivers for daily bikeshare counts</strong>. The input for our algorithm is a list of time, weather and  user information that might potentially drives aggregated consumer bike uses. I then use a number of machine learning algorithms (stepwise subset feature selection, shrinkage and regularization method, linear and non-linear regression) to construct a few candidate models. Then I compare their performances and select a “best” one that gives a relatively wholistic idea about the key drivers for the daily counts.
+The key question for the project is <strong>determining the dominant drivers for daily bikeshare counts</strong>. The input for our algorithm is a list of time, weather and  user information that might potentially drives aggregated consumer bike uses. I then use a number of machine learning algorithms (stepwise subset feature selection, shrinkage and regularization method, linear and non-linear regression) to construct a few candidate models. Then I compare their performances and select a “best” one that gives a relatively wholistic idea about the key drivers for the daily counts.
 
 
 ## Data and Features
@@ -32,29 +32,34 @@ Some examples of our variables are listed in table 1. </p>
 <p align="center"><em>Table 1. Sample variables in the datasets</em></p>
 
 
-## Methods and Results</h3>
+## Methods and Results
 
 <img src="/nu-cmu/assets/article4/procedure.png" alt="procedure" style="width:50%"/>
 
 <p align="center"><em>Figure 1. brief illustration of the methods and procedure</em></p>
 
             <br>
-<h3 class="section-heading1">3.1. Data Processing</h3>
-            <div style="font-size: 18px">
-            <p>I looked at the distribution of each features and log transformed skewed variables. More specifically, I want to stabilize the variance and meet the assumptions of a statistical test or procedure, such as t-test, ANOVA, regression, etc. </p>
-            <p>I also checked the correction between the explanatory variables, and removed highly correlated ones (temperature and dew point) to avoid multicollinearity. We created a subset of variables that pass through the multicollinearity check.</p>
-            <p><strong>Selected Results from Exploratory Data Analysis</strong></p>
-             <img class="img-fluid" src="img/eda.png" alt="">
-             <span class="caption text-muted">Figure 2. EDA graphs from season and member type analysis</span>
-             <p>Regarding member type, riders on average use the service longer than registered members. Bike share ride duration peaks during summer for both kinds users;  in general, there were more rides in spring and summer.</p>
-             <img class="img-fluid" src="img/weekday.png" alt="">
-             <span class="caption text-muted">Figure 3. EDA graph from weekday analysis</span>
-             <p>In different seasons, the bike share count varies a lot on different weekdays. This is the area that requires deeper analysis.</p>
-             <hr>
-             <br>
+### Data Processing
+
+I looked at the distribution of each features and log transformed skewed variables. More specifically, I want to stabilize the variance and meet the assumptions of a statistical test or procedure, such as t-test, ANOVA, regression, etc.
+
+I also checked the correction between the explanatory variables, and removed highly correlated ones (temperature and dew point) to avoid multicollinearity. We created a subset of variables that pass through the multicollinearity check.
+
+#### Selected Results from Exploratory Data Analysis
+<img src="/nu-cmu/assets/article4/eda.png" alt="eda" style="width:50%"/>
+
+<p align="center"><em>Figure 2. EDA graphs from season and member type analysis</em></p>
+
+Regarding member type, riders on average use the service longer than registered members. Bike share ride duration peaks during summer for both kinds users;  in general, there were more rides in spring and summer.
+
+<img src="/nu-cmu/assets/article4/weekday.png" alt="weekday" style="width:50%"/>
+
+<p align="center"><em>Figure 3. EDA graph from weekday analysis</em></p>
+
+In different seasons, the bike share count varies a lot on different weekdays. This is the area that requires deeper analysis.
 
 
-            <h3 class="section-heading1">3.2 Feature Selection</h3>
+#### Feature Selection
 
             <p><strong>1) Stepwise Subset Selection</strong></p>
             <p>Stepwise subset selection (forward, backward and exhaustive methods) proposes an efficient approach to select best subsets of the independent variables in the model. Forward selection starts from an empty set of features and adds features to the model through cross validation. Backward selection works all the the way around by starting from a full set; the exhaustive one incorporates the two approaches before. </p>
