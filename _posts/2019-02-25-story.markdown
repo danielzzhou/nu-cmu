@@ -6,10 +6,9 @@ date: '2019-02-25 21:03:36 +0530'
 categories: MediaInnovation FrontEnd
 ---
 
-While algorithmic news curation aggregators are common on social media,far less is known about the potential for article-level personalization in which an article is automatically re-written to appeal to different types of users, perhaps even adapted to each individual.
+The project serves as a proof of concept for news personalization, with design idealization, implementation and ethical considerations.
 
-So welcome to our project, Personalize the News. We are a team of five Northwestern University students working on news personalization in conjunction with the Northwestern University [Knight Lab Studio](https://knightlab.northwestern.edu/). Our project serves as a proof of concept for news personalization.
-
+While algorithmic news curation aggregators are common on social media,far less is known about the potential for article-level personalization in which an article is automatically re-written to appeal to different types of users, perhaps even adapted to each individual. The project, "Personalize my Story," serves as a proof of concept for news personalization, with the collaboration of my teammates in conjunction with the Northwestern University [Knight Lab Studio](https://knightlab.northwestern.edu/).
 
 View the live project [here](https://nuknightlab.github.io/studio-personal-story/)!
 
