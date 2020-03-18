@@ -27,14 +27,14 @@ To facilitate the analysis about user trends, I also obtained weather data in th
 Some examples of our variables are listed in table 1. </p>
 
 
-<img src="/nu-cmu/assets/article4/variable.png" alt="variables" style="width:50%"/>
+<img src="/nu-cmu/assets/article4/variable.png" alt="variables" style="width:90%"/>
 
 <p align="center"><em>Table 1. Sample variables in the datasets</em></p>
 
 
 ## Methods and Results
 
-<img src="/nu-cmu/assets/article4/procedure.png" alt="procedure" style="width:50%"/>
+<img src="/nu-cmu/assets/article4/procedure.png" alt="procedure"/>
 
 <p align="center"><em>Figure 1. brief illustration of the methods and procedure</em></p>
 
@@ -46,13 +46,13 @@ I looked at the distribution of each features and log transformed skewed variabl
 I also checked the correction between the explanatory variables, and removed highly correlated ones (temperature and dew point) to avoid multicollinearity. We created a subset of variables that pass through the multicollinearity check.
 
 #### Selected Results from Exploratory Data Analysis
-<img src="/nu-cmu/assets/article4/eda.png" alt="eda" style="width:50%"/>
+<img src="/nu-cmu/assets/article4/eda.png" alt="eda"/>
 
 <p align="center"><em>Figure 2. EDA graphs from season and member type analysis</em></p>
 
-Regarding member type, riders on average use the service longer than registered members. Bike share ride duration peaks during summer for both kinds users;  in general, there were more rides in spring and summer.
+Regarding member type, riders on average use the service longer than registered members. Bike share ride duration peaks during summer for both kinds users; in general, there were more rides in spring and summer.
 
-<img src="/nu-cmu/assets/article4/weekday.png" alt="weekday" style="width:50%"/>
+<img src="/nu-cmu/assets/article4/weekday.png" alt="weekday" style="width:90%"/>
 
 <p align="center"><em>Figure 3. EDA graph from weekday analysis</em></p>
 
@@ -68,7 +68,7 @@ I used two algorithms - automatic selection and all possible regression selectio
 
 First, I conducted the automatic selection where the R function step() performs the selection on this own and gives out the best subset of features. Forward selection gives out a model with 10 predictors, while backward and exhaustive suggest one with 7. I calculated the MSE for the two models and found that the one with 10 predictor variables has a lower error.
 
-<img src="/nu-cmu/assets/article4/stepwise.png" alt="stepwise" style="width:50%"/>
+<img src="/nu-cmu/assets/article4/stepwise.png" alt="stepwise" style="width:80%"/>
 
 <p align="center"><em>Figure 4. The performance of models with different numbers of variables from forward subset selection</em></p>
 
@@ -79,7 +79,7 @@ As a result, through stepwise subset selection, the optimal subset of features c
 #### Shrinkage Method
 
 L1 Regularization (Lasso) is a shrinkage method that regularizes the coefficient by shrinking them toward 0. It has the potential to improve the fit because reducing the estimates help reducing the variance and solves the overfitting problem. The algorithm is designed to minimize the expression (with a shrinkage penalty term) below:
-<img src="/nu-cmu/assets/article4/froumula.png" alt="formula" style="width:50%"/>
+<img src="/nu-cmu/assets/article4/fromula.png" alt="formula" style="width:50%"/>
 
 This method can be used for feature selection because shrinking some coefficients to 0 is essentially eliminating the variables in the model. 
 
@@ -134,7 +134,7 @@ Based on the MSE on validation set, I observe that the model with the lowest err
 
 ## Conclusion
 Through feature and model selection algorithms, I identified the general additive model that explain the effects of with influential features. Scrutinizing at the features and the smoothed patterns, I observe that:</p>
-<img src="/nu-cmu/assets/article4/conclu.png" alt="conclu" style="width:70%"/>
+<img src="/nu-cmu/assets/article4/conclu.png" alt="conclu" style="width:90%"/>
 
 <p align="center"><em>Figure 7. graphical illustration of the effects of different variables in the GAM model with partial splines</em></p>
 
