@@ -38,7 +38,7 @@ Some examples of our variables are listed in table 1. </p>
 
 <p align="center"><em>Figure 1. brief illustration of the methods and procedure</em></p>
 
-            <br>
+
 ### Data Processing
 
 I looked at the distribution of each features and log transformed skewed variables. More specifically, I want to stabilize the variance and meet the assumptions of a statistical test or procedure, such as t-test, ANOVA, regression, etc.
