@@ -8,7 +8,7 @@ categories: MachineLearning MomentumInvesting
 
 Are solely price-based factors powerful enough for cross-sectional equity return predictions?
 
-<br>
+
 
 *In collaboration with Katherine Liu, Chris Wang and Joe Zhou* 
  
